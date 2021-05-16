@@ -1,6 +1,6 @@
-# OpenSource Community Managed Sustainable Data Listings App 
+# a-a Roots Restaurant - Firebase Full Stack App - With API - Live - 1.0 ****
 
-## Built from NodeJS, React CRA, & Googles Firebase
+## Built with NodeJS, React CRA, & Googles Firebase
 
 ![Firebase Badge](https://img.shields.io/badge/Firebase-✔-brightgreen)
 ![PayPal Badge](https://img.shields.io/badge/PayPal-✔-brightgreen)
@@ -15,12 +15,12 @@
 
 # [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://reactjs.org/docs/how-to-contribute.html#your-first-pull-request)
 
-[![Visits Badge](https://badges.pufler.dev/visits/JasonHoku/MicroHawaii)](https://badges.pufler.dev)
-[![Created Badge](https://badges.pufler.dev/created/JasonHoku/MicroHawaii)](https://badges.pufler.dev)
+[![Visits Badge](https://badges.pufler.dev/visits/JasonHoku/a-a-Roots)](https://badges.pufler.dev)
+[![Created Badge](https://badges.pufler.dev/created/JasonHoku/a-a-Roots)](https://badges.pufler.dev)
 [![Commits Badge](https://badges.pufler.dev/commits/monthly/JasonHoku)](https://badges.pufler.dev)
 ![Discord](https://img.shields.io/discord/364993358789345283?style=for-the-badge)
 
-# The Expertly Crafted Web Dev Utility
+# Restaurant Themed MicroHawaii Web App
 
 ![image](https://user-images.githubusercontent.com/6715569/105939604-a2f10080-5ffd-11eb-9903-9618dcd360a7.png)
 
@@ -131,24 +131,3 @@ Get UA-APIKEYHERE from projects --> settings
 ===========================
 
 ===========================
-
-• Maui Sustainable Solutions
-•
-• Creating Sustainable Solutions through Awareness , education, events  
- • Infrastructure, Systems, Services, Products and Practices together with the Maui Community.
-• Thank you —— acknowledge grace of precious testifies
-Climate disaster is pollution
-• The plastic problem can be rooted largely in our lack of food independence, importing 90% of our food and we import water .....
-• Providing products and services that are Sustainable for Maui to transition to a plasticfree place
-• enhancing the community by bringing together local organizations in our projects, to create sustainable lifestyle, infrastructure & ecotourism networks.
-• The fundamentals we actively address in sustainable solutions are : tourism, food , water , waste/recycling , packaging, energy, agriculture/composting , health & transportation.
-• Equitable solutions - bringing community together !
-• App in development to create green jobs and green practices
-• We address these through several Programs: #PLASTICFREEMAUI (events, water, products), COMMUNITY COMPOSTING,
-• Maui EcoKits addresses the plastic problem on the islands, and providing Reusables to consumers and businesses in displacing single-use plastic consumption with: bamboo sporks, stainless steel bottles & food tins, grocery & produce bags.
-• We provide installation and maintenance of clean drinking water refill stations as Representative on Maui of FloWater Hawaii. This has a major impact in plastic reduction, increased traffic for businesses, and improved wellness for everyone.
-• Our Community Composting program is in development to provides residences and businesses island wide with the infrastructure necessary to compost food waste. MSS aims to provide transportation of waste to composting locations in Rivians, the first electric truck on Maui.
-• Our website provides information and education enabling a zero waste reality by networking with local organizations, businesses and officials. This Sustainability MAP will show everywhere an individual can : refill their water bottle, bring their own container for food/shopping, recharge their electric vehicle, eat locally sourced food, find vegan and vegetarian options, purchase locally made products, recycle, and a complete directory of official Maui County trails, beach access, historical sites and more.
-the sustainability instruction manual for residents and guests on Maui. The interactive map, will provide information, education and implementation of a sustainable infrastructure, practices , and culture by partnering with local businesses to rapidly implement solutions in recycling and water.
-
-We will approach local businesses with our sustainable menu, and collaboration with them will provide sustainable solutions that are implemented rapidly in the immediate future while simultaneously promotes through our mobile platform. We will be providing Solutions in: water via filtration systems, waste reduction via sustainable products (specifically water bottles food containers and coolers) and modern recycling system locations in our first 2-4 quarters of 2019.
