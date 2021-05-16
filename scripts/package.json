@@ -1,0 +1,7 @@
+
+{
+    "scripts": {
+        "generate-build-version": "node generate-build-version",
+        "prebuild": "npm run generate-build-version"
+     }
+}

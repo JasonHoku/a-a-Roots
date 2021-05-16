@@ -1,0 +1,23 @@
+// Fixed Header
+
+.fixed-header {
+  .app-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    margin: auto;
+    padding: 0px;
+  }
+
+  .app-main {
+    padding-top: $app-header-height;
+  }
+
+  &:not(.fixed-sidebar):not(.closed-sidebar) {
+    .app-sidebar {
+      .app-header__logo {
+        visibility: hidden;
+      }
+    }
+  }
+}

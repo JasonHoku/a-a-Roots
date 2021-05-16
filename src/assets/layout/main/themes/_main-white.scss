@@ -1,0 +1,97 @@
+// Theme White
+
+// Variables
+
+$app-container-bg: #808080;
+$app-sidebar-bg: rgb(255, 255, 255);
+$app-header-bg: #ffd900;
+$app-header-logo-bg: transparent;
+
+// Content
+
+.app-theme-white {
+  &.app-container {
+    background: $app-container-bg;
+    background-color: #80808000;
+  }
+
+  .app-sidebar-bg {
+    height: 100%;
+    padding: 0;
+  }
+  .app-sidebar {
+    background: $app-sidebar-bg;
+    opacity: 1;
+  }
+  .app-sidebar-bg {
+    height: 100%;
+    padding: 0;
+  }
+  .app-page-title {
+    background: rgba(255, 255, 255, 1);
+    height: 100px;
+  }
+
+  .app-footer .app-footer__inner,
+  .app-header {
+    background: linear-gradient(137deg, #e0a317, #ffd900, #e36421, #f2d789);
+    background-size: 800% 800%;
+
+    -webkit-animation: MovingGradient 33s ease infinite;
+    -moz-animation: MovingGradient 33s ease infinite;
+    -o-animation: MovingGradient 33s ease infinite;
+    animation: MovingGradient 33s ease infinite;
+  }
+
+  @-webkit-keyframes MovingGradient {
+    0% {
+      background-position: 2% 0%;
+    }
+    50% {
+      background-position: 99% 100%;
+    }
+    100% {
+      background-position: 2% 0%;
+    }
+  }
+  @-moz-keyframes MovingGradient {
+    0% {
+      background-position: 2% 0%;
+    }
+    50% {
+      background-position: 99% 100%;
+    }
+    100% {
+      background-position: 2% 0%;
+    }
+  }
+  @-o-keyframes MovingGradient {
+    0% {
+      background-position: 2% 0%;
+    }
+    50% {
+      background-position: 99% 100%;
+    }
+    100% {
+      background-position: 2% 0%;
+    }
+  }
+  @keyframes MovingGradient {
+    0% {
+      background-position: 2% 0%;
+    }
+    50% {
+      background-position: 99% 100%;
+    }
+    100% {
+      background-position: 2% 0%;
+    }
+  }
+
+  &.fixed-header {
+    .app-header__logo {
+      background: transparent ;
+      opacity: 1;
+    }
+  }
+}

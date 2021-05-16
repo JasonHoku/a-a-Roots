@@ -1,0 +1,13 @@
+.landingContent {
+  animation: imageAnimation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  height: 100%;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: transparent;
+}
