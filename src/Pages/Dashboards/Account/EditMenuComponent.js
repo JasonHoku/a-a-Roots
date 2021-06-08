@@ -37,7 +37,13 @@ import "firebase/auth";
 import "firebase/storage";
 import "firebase/firestore";
 
+import { makeStyles } from "@material-ui/core/styles";
+import Popover from "@material-ui/core/Popover";
+import Typography from "@material-ui/core/Typography";
+
 function EditMenuComponent() {
+  const [categoryList, setCategoryList] = useState([]);
+
   const [url, setURL] = useState("");
 
   const [textVar, settextVar] = useState("Select an Instance To Begin");
@@ -79,18 +85,18 @@ function EditMenuComponent() {
   const [gotDownloadURL, setgotDownloadURL] = useState(
     "Upload An Image To Embed"
   );
+  const [renderedMenuItemsArray, setRenderedMenuItemsArray] = useState([]);
 
-  function handleInputChangeEvent(event) {
-    setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  function handleInputChangeEvent(event) {
-    setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+  const useStyles = makeStyles((theme) => ({
+    typography: {
+      padding: theme.spacing(2),
+    },
+  }));
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
   loadStageRef.current = 1;
   const isInitialMount = useRef(true);
 
@@ -112,6 +118,7 @@ function EditMenuComponent() {
         let concData = [];
         let concData2 = [];
         let dbData = {};
+        let tempParsedCategories = [];
         let imgSrcArray = [];
         let gotLoadedObjectData = [];
         let gameObjectData = {};
@@ -131,32 +138,66 @@ function EditMenuComponent() {
             setDataArrayState(dbDataArray);
 
             if (dbDataArray) {
+              dbDataArray.forEach((el) => {
+                if (window.ItemCounter === undefined) {
+                  window.ItemCounter = 0;
+                  window.ItemCatCount = 0;
+                }
+                window.ItemCounter++;
+                window.ItemCatCount++;
+                console.log("X Items In Category:");
+                console.log(window.ItemCatCount);
+                console.log("X End");
+                console.log(categoryList);
+                if (categoryList.length < 1) categoryList.push(el.Category);
+                if (
+                  !JSON.stringify(categoryList).includes(
+                    JSON.stringify(el.Category)
+                  )
+                ) {
+                  console.log("New Category Detected");
+
+                  if (window.CategoryCounter === undefined) {
+                    window.CategoryCounter = 0;
+                    window.ItemsPerCategory = window.ItemCounter;
+                  }
+                  categoryList.push(el.Category);
+                  window.CategoryCounter++;
+                  window.ItemsPerCategory = window.ItemCatCount;
+                  console.log("X Items In Category:");
+
+                  console.log(window.ItemCatCount);
+                  window.ItemCatCount = 0;
+
+                  console.log(el.Category);
+                  console.log(window.CategoryCounter);
+                }
+              });
+
               try {
                 setloadedTotalIDs(dbDataArray.length);
-                setloadedCategory(dbDataArray[loadedEzID - 1].Category) &
-                  setloadedDescription(
-                    dbDataArray[loadedEzID - 1].Description
-                  ) &
-                  setloadedPublic(dbDataArray[loadedEzID - 1].Available) &
-                  setloadedDescriptionData(
-                    dbDataArray[loadedEzID - 1].Description
-                  ) &
-                  setloadedTitleData(dbDataArray[loadedEzID - 1].Title) &
-                  setloadedPriceData(dbDataArray[loadedEzID - 1].Price) &
-                  setloadedImgURL(dbDataArray[loadedEzID - 1].ImgURL);
+                setloadedCategory(dbDataArray[loadedEzID - 1].Category);
+                setloadedDescription(dbDataArray[loadedEzID - 1].Description);
+                setloadedPublic(dbDataArray[loadedEzID - 1].Available);
+                setloadedDescriptionData(
+                  dbDataArray[loadedEzID - 1].Description
+                );
+                setloadedTitleData(dbDataArray[loadedEzID - 1].Title);
+                setloadedPriceData(dbDataArray[loadedEzID - 1].Price);
+                setloadedImgURL(dbDataArray[loadedEzID - 1].ImgURL);
                 setloadedLastSave(
                   dbDataArray[loadedEzID - 1].LastSave.toDate()
-                ) &
-                  setloadedIDData(dbDataArray[loadedEzID - 1].ID) &
-                  setstatusVar(
-                    "Viewing " +
-                      categoryVar +
-                      " " +
-                      loadedEzID +
-                      " of: " +
-                      dbDataArray.length
-                  ) &
-                  setloadStage("3");
+                );
+                setloadedIDData(dbDataArray[loadedEzID - 1].ID);
+                setstatusVar(
+                  "Viewing " +
+                    categoryVar +
+                    " " +
+                    loadedEzID +
+                    " of: " +
+                    dbDataArray.length
+                );
+                setloadStage("3");
                 loadStageRef.current = 3;
               } catch (error) {}
             }
@@ -255,6 +296,17 @@ function EditMenuComponent() {
     }
   }
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   function formResetter() {
     try {
       document.forms[1].reset();
@@ -268,33 +320,6 @@ function EditMenuComponent() {
   function checkFormStates() {
     setgotDownloadURL(localStorage.getItem("gotDownloadURL"));
     handleImageUploadState();
-    try {
-      if (String(formTitle).length > 3) {
-        console.log("ZZZ");
-        if (String(localStorage.getItem(`username`)).length > 3) {
-          if (String(formLoc.length) > 3) {
-            if (String(editedDescription.length) > 3) {
-              if (String(formCategory).length > 3) {
-                if (String(formPublicType) !== "") {
-                  if (String(formGMapCoords).length > 3) {
-                    document.getElementById("finListButton").disabled = false;
-                    document.getElementById(
-                      "finListButton"
-                    ).style.backgroundColor = "blue";
-
-                    setfinListButton("Send Listing"),
-                      setfinListButtonStatus("Ready To Publish"),
-                      setfinListButtonDisable(false);
-                  }
-                }
-              }
-            }
-          }
-        }
-      } else {
-        document.getElementById("finListButton").disabled = true;
-      }
-    } catch (e) {}
   }
   function handleImageUploadState() {
     if (gotDownloadURL === "Upload An Image To Embed") {
@@ -315,9 +340,9 @@ function EditMenuComponent() {
           <button
             style={{ borderRadius: "25px" }}
             onClick={() => {
-              formResetter() &
-                checkFormStates() &
-                localStorage.setItem("gotDownloadURL", "Upload Image To Embed");
+              formResetter();
+              checkFormStates();
+              localStorage.setItem("gotDownloadURL", "Upload Image To Embed");
             }}
           >
             Reset Image Form
@@ -342,16 +367,74 @@ function EditMenuComponent() {
             <b>&nbsp; Menu&nbsp;Manager</b>
           </h4>
           <span>
-            <Button
-              color="primary"
-              onClick={() =>
-                setcategoryVar("MenuItems") &
-                setloadStage("1") &
-                setloadedEzID("1")
-              }
-            >
+            <Button variant="contained" color="primary" onClick={handleClick}>
               Browse By Category
-            </Button>{" "}
+            </Button>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              Total Categories:
+              {categoryList.length}
+              <br />
+              Category List: <br />
+              <div id="CategorizedItemListDiv" hidden>
+                <br />
+                Click To Navigate To: <br />
+                {dataArrayState.map((elMap) => {
+                  if (selectedCategory === elMap.Category)
+                    return (
+                      <div key={elMap.ID + "_DivKey1"}>
+                        <button
+                          onClick={() => {
+                            setloadedEzID(elMap.ID + 1);
+                            handleClose();
+                            setloadStage("1");
+                            loadStageRef.current = 1;
+                            isInitialMount.current = true;
+                          }}
+                        >
+                          <b>{elMap.Title}</b> {elMap.ID}
+                        </button>
+                      </div>
+                    );
+                })}
+                <div style={{ height: "75px" }}></div>
+              </div>
+              {categoryList.map((elMap, index) => {
+                return (
+                  <div key={elMap.ID + "_DivKey2"}>
+                    <button
+                      onClick={() => {
+                        setSelectedCategory(elMap);
+                        document.getElementById(
+                          "CategorizedItemListDiv"
+                        ).hidden = false;
+                        dataArrayState.forEach((el) => {
+                          if (String(elMap) === el.Category) {
+                            console.log(el);
+                          }
+                        });
+                      }}
+                    >
+                      <b>{elMap}</b>
+                    </button>
+
+                    <div style={{ height: "15px" }}></div>
+                  </div>
+                );
+              })}
+            </Popover>
             &nbsp;
             <Button
               color="primary"
@@ -365,12 +448,12 @@ function EditMenuComponent() {
             </Button>{" "}
           </span>
           <h3>{statusVar}</h3>
-          ID #: &nbsp;
+          #: &nbsp;
           <input
             onChange={(e) => {
-              setloadedEzID(e.target.value) &
-                setloadStage("1") &
-                formResetter();
+              setloadedEzID(e.target.value);
+              setloadStage("1");
+              formResetter();
               loadStageRef.current = 1;
               isInitialMount.current = true;
             }}
@@ -383,7 +466,8 @@ function EditMenuComponent() {
             style={{ marginBottom: "5px" }}
             color="primary"
             onClick={() => {
-              setloadedEzID(toInteger(loadedEzID) - 1) & setloadStage("1");
+              setloadedEzID(toInteger(loadedEzID) - 1);
+              setloadStage("1");
               loadStageRef.current = 1;
               isInitialMount.current = true;
             }}
@@ -397,7 +481,8 @@ function EditMenuComponent() {
             onClick={() => {
               loadStageRef.current = 1;
               isInitialMount.current = true;
-              setloadedEzID(toInteger(loadedEzID) + 1) & setloadStage("1");
+              setloadedEzID(toInteger(loadedEzID) + 1);
+              setloadStage("1");
             }}
           >
             →
@@ -471,7 +556,7 @@ function EditMenuComponent() {
                 />
               </Col>
               <Col>
-                <b>ID</b>:<br />
+                <b>Data ID</b>:<br />
                 <input
                   style={{
                     display: "inline",
@@ -642,6 +727,44 @@ function EditMenuComponent() {
                 Copy text
               </button>
             </div>
+          </div>
+          <div
+            hidden={String(loadedImgURL).length < 2}
+            style={{
+              boxShadow: "0px 0px 0px 2px rgba(50,50,50, .8)",
+            }}
+          >
+            <h4 style={{ width: "100%", textAlign: "left" }}>
+              <center>
+                <b>
+                  <button
+                    onClick={() => {
+                      firebase
+                        .firestore()
+                        .collection("MenuItems")
+                        .doc(String(loadedEzID))
+                        .set({
+                          Price: loadedPriceData,
+                          Available: loadedPublic,
+                          ID: loadedEzID,
+                          Title: loadedTitleData,
+                          LastSave: firebase.firestore.FieldValue.serverTimestamp(),
+                          Description: loadedDescriptionData,
+                          Category: loadedCategory,
+                          ImgURL: "",
+                        })
+                        .then(() => {
+                          setloadStage("1");
+                          loadStageRef.current = 1;
+                          isInitialMount.current = true;
+                        });
+                    }}
+                  >
+                    &nbsp;Remove Image:{" "}
+                  </button>
+                </b>
+              </center>
+            </h4>
           </div>
           <br />{" "}
           <div

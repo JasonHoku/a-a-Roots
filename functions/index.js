@@ -67,3 +67,19 @@ exports.oneHourInterval = functions.pubsub
     }
     buildGeneratedData();
   });
+// const axios = require("axios");
+
+// // "https://api.instagram.com/v1/users/aarootsmaui/media/recent/?client_id=1ed36ddb32788d6819e034233d9e00b8"
+
+// // ("https://api.instagram.com/v1/users/search?q=aarootsmaui&client_id=1ed36ddb32788d6819e034233d9e00b8");
+
+// return axios
+//   .get(
+//     "https://api.instagram.com/v1/users/search?q=aarootsmaui&client_id=1ed36ddb32788d6819e034233d9e00b8"
+//   )
+//   .then((response) => {
+//     console.log(response.data);
+//   })
+//   .catch((err) => {
+//     console.log(err.toJSON());
+//   });

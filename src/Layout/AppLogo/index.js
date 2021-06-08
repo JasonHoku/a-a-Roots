@@ -99,30 +99,30 @@ class HeaderLogo extends React.Component {
               />
             </div>
           </Link>
-          <div className="header__pane ml-auto">
-            
-          </div>
+          <div className="header__pane ml-auto"></div>
         </div>
-        <Slider
-          style={{ position: "absolute", top: "-10px" }}
-          width={65}
-          lineHeight={5}
-          lineSpacing={8}
-          color="#253030"
-          active={this.state.active}
-          onClick={() => {
-            if (this.state.active) {
-              this.setState({
-                active: !this.state.active,
-              });
-            } else {
-              this.setState({
-                active: this.state.active,
-              });
-            }
-            window.toggleSidebar();
-          }}
-        />
+        <span style={{ position: "absolute", top: "15px" }}>
+          <Slider
+            style={{ position: "absolute", top: "-25px" }}
+            width={65}
+            lineHeight={5}
+            lineSpacing={8}
+            color="#253030"
+            active={this.state.active}
+            onClick={() => {
+              if (this.state.active) {
+                this.setState({
+                  active: !this.state.active,
+                });
+              } else {
+                this.setState({
+                  active: this.state.active,
+                });
+              }
+              window.toggleSidebar();
+            }}
+          />
+        </span>
       </Fragment>
     );
   }

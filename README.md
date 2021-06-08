@@ -1,4 +1,4 @@
-# a-a Roots Restaurant - Firebase Full Stack App - With API - Live - 1.0 ****
+# a-a Roots Restaurant - Firebase Full Stack App - With API - Live - 1.0
 
 ## Built with NodeJS, React CRA, & Googles Firebase
 

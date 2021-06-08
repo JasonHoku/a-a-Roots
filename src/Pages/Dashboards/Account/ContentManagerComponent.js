@@ -88,12 +88,6 @@ function ContentManagerComponent() {
   const [isLoadedOnce, setisLoadedOnce] = useState("1");
   const [file, setFile] = useState(null);
 
-  function handleInputChangeEvent(event) {
-    setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
   useEffect(() => {
     let concData = [];
     let concData2 = [];
@@ -142,7 +136,8 @@ function ContentManagerComponent() {
       }
       setstatusVar(
         "Viewing " + categoryVar + " " + loadedEzID + " of: " + loadedTotalIDs
-      ) & setloadStage("3");
+      );
+      setloadStage("3");
     }
     if (loadStage === "3") {
       setloadStage("4");

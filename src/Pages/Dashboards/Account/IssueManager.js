@@ -238,7 +238,7 @@ class IssueManager extends Component {
                 name="titleVar"
                 placeholder="Issue Title"
                 id="titleVar"
-                onChange={() => this.handleInputChange3(event)}
+                onChange={(event) => this.handleInputChange3(event)}
                 style={{ top: "5px", position: "relative" }}
                 type="text"
               ></Input>{" "}
@@ -248,7 +248,7 @@ class IssueManager extends Component {
                 name="NoteVar"
                 id="NoteVar"
                 placeholder="Issue Description"
-                onChange={() => this.handleInputChange(event)}
+                onChange={(event) => this.handleInputChange(event)}
                 style={{ top: "15px", position: "relative", width: "250px" }}
                 type="textarea"
               ></Input>{" "}
@@ -261,7 +261,7 @@ class IssueManager extends Component {
               <br />
               <input
                 type="number"
-                onChange={() => this.handleInputChange2(event)}
+                onChange={(event) => this.handleInputChange2(event)}
                 style={{ width: "50px" }}
               ></input>{" "}
               &nbsp;

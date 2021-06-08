@@ -33,23 +33,15 @@ class AppMobileMenu extends React.Component {
     if (String(event.target.className).includes("Burger")) {
     } else {
       this.setState({ active: false });
-      this.toggleMobileSidebar;
-      this.toggleMobileSmall;
-    }
-  }
-  handleClickOutside(event) {
-    if (String(event.target.className).includes("Burger")) {
-    } else {
-      this.setState({ active: false });
-      this.toggleMobileSidebar;
-      this.toggleMobileSmall;
+      this.toggleMobileSidebar();
+      this.toggleMobileSmall();
     }
   }
 
   hashChangeEvent() {
     this.setState({ active: false });
-    this.toggleMobileSidebar;
-    this.toggleMobileSmall;
+    this.toggleMobileSidebar();
+    this.toggleMobileSmall();
   }
 
   componentDidMount() {
@@ -96,23 +88,7 @@ class AppMobileMenu extends React.Component {
     return (
       <Fragment>
         <div className="app-header__mobile-menu">
-          <div
-            onClick={this.toggleMobileSidebar}
-          >
-            <Slider
-              style={{
-                position: "absolute",
-                left: "0px",
-                zIndex: 999,
-              }}
-              width={45}
-              lineHeight={5}
-              lineSpacing={8}
-              color="#770077"
-              active={this.state.active}
-              onClick={() => this.setState({ active: !this.state.active })}
-            />
-          </div>
+          <div onClick={this.toggleMobileSidebar}></div>
         </div>
         <div className="app-header__menu">
           <span onClick={this.toggleMobileSmall}></span>

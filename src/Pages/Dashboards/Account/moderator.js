@@ -13,20 +13,18 @@ import { Query, ApolloProvider, Mutation } from "react-apollo";
 import { gql, useQuery } from "@apollo/client";
 import axios from "axios";
 
-import FormQueryComponent from "./FormQueryComponent.js";
 import UserQueryComponent from "./UserQueryComponent.js";
 import { toInteger } from "lodash";
 import ProductManagerComponent from "./ProductManagerComponent.js";
 import ContentManagerComponent from "./ContentManagerComponent.js";
 import EventManagerComponent from "./EventManagerComponent.js";
-import NoteManagerComponent from "./NoteManagerComponent.js";
+
 import EditMenuComponent from "./EditMenuComponent.js";
 import SurveyManagerComponent from "./SurveyManagerComponent.js";
-import LiveChatManagerComponent from "./LiveChatManagerComponent.js";
+
 import VideoManager from "./VideoManager.js";
 import IssueManager from "./IssueManager.js";
 import NetworkManagerComponent from "./NetworkManagerComponent.js";
-import QuestionnaireManagerComponent from "./QuestionnaireManagerComponent.js";
 
 import classnames from "classnames";
 
@@ -160,6 +158,7 @@ function ModeratorElements() {
     const items2 = useFirestoreCollectionData(collectionRef2);
 
     // easily check the loading status
+    var status;
     if (status === "loading") {
       return "...";
     } else {
@@ -172,8 +171,8 @@ function ModeratorElements() {
           ) {
             return items2.data.length;
           } else console.log("YYY");
-          showNotification(e);
-          showNotification2(e);
+          // showNotification(e);
+          // showNotification2(e);
           localStorage.setItem("users", parseInt(items2.data.length));
           return items2.data.length;
         }
@@ -260,11 +259,7 @@ function ModeratorElements() {
       return <AccountElements />;
     }
   }
-  function loadLiveChatManager() {
-    if (activeTab === "PublicChat") {
-      return <LiveChatManagerComponent />;
-    }
-  }
+
 
   function loadUserQueryComponent(props) {
     if (activeTab === "Users") {
@@ -276,11 +271,7 @@ function ModeratorElements() {
       return <ListingManagerComponent />;
     }
   }
-  function loadQuestionnaireManagerComponent() {
-    if (activeTab === "Questionaire Manager") {
-      return <QuestionnaireManagerComponent />;
-    }
-  }
+
   function loadEventManagerComponent(props) {
     if (activeTab === "Events") {
       return <EventManagerComponent />;
@@ -309,71 +300,15 @@ function ModeratorElements() {
       return <SurveyManagerComponent />;
     }
   }
-  function loadNoteManagerComponent(props) {
-    if (activeTab === "Notes") {
-      return <NoteManagerComponent />;
-    }
-  }
+
   function toggle(tab) {
     if (activeTab !== tab) {
       setactiveTab(tab);
     }
   }
-  function toggle2(tab) {
-    if (activeTab2 !== tab) {
-      setState({
-        activeTab2: tab,
-      });
-    }
-  }
-  function onImageChange(event) {
-    console.log(event.target.files);
-
-    setState({
-      images: event.target.files,
-    });
-  }
-
-  function handleInputChange(event) {
-    setState({
-      formName: event.target.value,
-    });
-  }
-  function handlePriceInputChange(event) {
-    localStorage.setItem(
-      "localData7",
-      event.target.value - localStorage.getItem("localData4")
-    ) & setadminPrice(event.target.value);
-  }
   function valueCheck() {
     if (!localStorage.getItem("localData3")) {
       localStorage.setItem("localData3", 0);
-    }
-  }
-
-  function handlePriceInputChange(event) {
-    localStorage.setItem(
-      "localData7",
-      event.target.value - localStorage.getItem("localData4")
-    ) & setadminPrice(event.target.value);
-  }
-
-  function heartBeat() {
-    setInterval(getData, 3000);
-  }
-  function getData() {
-    console.log("x");
-    try {
-      let concData = "";
-      for (var i = 0; i < JSON.parse(respData).length; i++) {
-        concData =
-          concData + "\r\n A"[i] + JSON.stringify(JSON.parse(respData)[i]);
-        AaRootsDATA = concData;
-      }
-
-      setState({ AaRootsDATA: AaRootsDATA });
-    } catch (error) {
-      console.log(error);
     }
   }
 
@@ -388,7 +323,6 @@ function ModeratorElements() {
         className="ModeratorBackground"
         fluid
         style={{
-          backgroundColor: "transparent",
           backgroundColor: "#FFFFFFDD",
           borderRadius: "55px",
         }}
@@ -893,21 +827,7 @@ function ModeratorElements() {
             {loadContentManagerComponent()}
             <br />
           </TabPane>
-          <TabPane tabId="Notes">
-            <Row style={{ justifyContent: "center" }}>
-              {" "}
-              <Card
-                style={{
-                  width: "26rem",
-                  boxShadow: "0px 0px 0px 5px rgba(50,50,50, .8)",
-                  alignContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {loadNoteManagerComponent()}
-              </Card>
-            </Row>
-          </TabPane>
+
           <TabPane tabId="Surveys">
             <Row style={{ justifyContent: "center" }}>
               {" "}
@@ -923,8 +843,7 @@ function ModeratorElements() {
               </Card>
             </Row>
           </TabPane>
-          <TabPane tabId="PublicChat">{loadLiveChatManager()}</TabPane>
-          <TabPane tabId="Video">
+               <TabPane tabId="Video">
             <Row style={{ justifyContent: "center" }}>
               {" "}
               <Card
@@ -944,10 +863,7 @@ function ModeratorElements() {
             {loadListingManagerComponent()}
             <br />
           </TabPane>
-          <TabPane tabId="Questionaire Manager">
-            {loadQuestionnaireManagerComponent()}
-            <br />
-          </TabPane>
+
         </TabContent>
         <br />
       </Container>

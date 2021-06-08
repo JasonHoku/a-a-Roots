@@ -43,7 +43,7 @@ const firebaseConfig = {
   storageBucket: "a-a-roots.appspot.com",
   messagingSenderId: "565878516937",
   appId: "1:565878516937:web:a818482f4819ecc1837118",
-  measurementId: "G-CE28VLQR7Z"
+  measurementId: "G-CE28VLQR7Z",
 };
 
 function ListingManagerComponent() {
@@ -89,12 +89,6 @@ function ListingManagerComponent() {
     "Upload An Image To Embed"
   );
 
-  function handleInputChangeEvent(event) {
-    setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -129,24 +123,19 @@ function ListingManagerComponent() {
       try {
         setisLoadedOnce("1");
         setloadedTotalIDs(loadedSnapshotData.length);
-        setloadedCategory(loadedSnapshotData[loadedEzID - 1].Category) &
-          setloadedDescription(loadedSnapshotData[loadedEzID - 1].Description) &
-          setloadedGMapCoords(loadedSnapshotData[loadedEzID - 1].GMapCoords) &
-          setloadedPublic(loadedSnapshotData[loadedEzID - 1].Public) &
-          setloadedLocationData(loadedSnapshotData[loadedEzID - 1].Location) &
-          setloadedTitleData(loadedSnapshotData[loadedEzID - 1].Title) &
-          setloadedCreatorData(loadedSnapshotData[loadedEzID - 1].Creator) &
-          setloadedLastEdit(loadedSnapshotData[loadedEzID - 1].LastEdit) &
-          setloadedIDData(loadedSnapshotData[loadedEzID - 1].ID) &
-          setstatusVar(
-            "Viewing " +
-              categoryVar +
-              " " +
-              loadedEzID +
-              " of: " +
-              loadedTotalIDs
-          ) &
-          setloadStage("3");
+        setloadedCategory(loadedSnapshotData[loadedEzID - 1].Category);
+        setloadedDescription(loadedSnapshotData[loadedEzID - 1].Description);
+        setloadedGMapCoords(loadedSnapshotData[loadedEzID - 1].GMapCoords);
+        setloadedPublic(loadedSnapshotData[loadedEzID - 1].Public);
+        setloadedLocationData(loadedSnapshotData[loadedEzID - 1].Location);
+        setloadedTitleData(loadedSnapshotData[loadedEzID - 1].Title);
+        setloadedCreatorData(loadedSnapshotData[loadedEzID - 1].Creator);
+        setloadedLastEdit(loadedSnapshotData[loadedEzID - 1].LastEdit);
+        setloadedIDData(loadedSnapshotData[loadedEzID - 1].ID);
+        setstatusVar(
+          "Viewing " + categoryVar + " " + loadedEzID + " of: " + loadedTotalIDs
+        );
+        setloadStage("3");
       } catch (error) {
         console.log(error);
       }
@@ -240,7 +229,8 @@ function ListingManagerComponent() {
         .collection(categoryVar)
         .doc(String(loadedSnapshotDataIDs[loadedEzID - 1]))
         .delete()
-        .then(setloadStage("1") & setloadedTotalIDs(loadedTotalIDs - 1));
+        .then(setloadStage("1"));
+      setloadedTotalIDs(loadedTotalIDs - 1);
     } else {
       //some code
     }
@@ -260,31 +250,7 @@ function ListingManagerComponent() {
     setgotDownloadURL(localStorage.getItem("gotDownloadURL"));
     handleImageUploadState();
     try {
-      if (String(formTitle).length > 3) {
-        console.log("ZZZ");
-        if (String(localStorage.getItem(`username`)).length > 3) {
-          if (String(formLoc.length) > 3) {
-            if (String(editedDescription.length) > 3) {
-              if (String(formCategory).length > 3) {
-                if (String(formPublicType) !== "") {
-                  if (String(formGMapCoords).length > 3) {
-                    document.getElementById("finListButton").disabled = false;
-                    document.getElementById(
-                      "finListButton"
-                    ).style.backgroundColor = "blue";
 
-                    setfinListButton("Send Listing"),
-                      setfinListButtonStatus("Ready To Publish"),
-                      setfinListButtonDisable(false);
-                  }
-                }
-              }
-            }
-          }
-        }
-      } else {
-        document.getElementById("finListButton").disabled = true;
-      }
     } catch (e) {}
   }
   function handleImageUploadState() {
@@ -306,9 +272,9 @@ function ListingManagerComponent() {
           <button
             style={{ borderRadius: "25px" }}
             onClick={() => {
-              formResetter() &
-                checkFormStates() &
-                localStorage.setItem("gotDownloadURL", "Upload Image To Embed");
+              formResetter();
+              checkFormStates();
+              localStorage.setItem("gotDownloadURL", "Upload Image To Embed");
             }}
           >
             Reset Image Form

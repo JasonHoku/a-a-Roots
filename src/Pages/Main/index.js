@@ -7,13 +7,10 @@ import Loader from "react-loaders";
 import { ToastContainer } from "react-toastify";
 
 // Pages
-import CheckVersions from "./checkVersions";
 
 import ResizeDetector from "react-resize-detector";
 
 import { unregister } from "../../serviceWorker";
-
-import AppMain from "../../Layout/AppMain";
 
 import "firebase/storage";
 import "firebase/firestore";
@@ -21,22 +18,6 @@ import "firebase/analytics";
 import "firebase/performance";
 
 import firebase from "firebase/app";
-
-import LandingPage from "../../Layout/AppMain/LandingPage";
-
-import App from "../../Pages/Dashboards/Home/Examples/backgroundeffect";
-
-const HomeDashboard = lazy(() =>
-  retry(() => import("../../Pages/Dashboards/Home/"))
-);
-
-const AccountPage = lazy(() =>
-  retry(() => import("../../Pages/Dashboards/Account/"))
-);
-
-import Contact from "../../Pages/Dashboards/Contact/";
-import Writing from "../../Pages/Dashboards/Writing/";
-import Menu from "../../Pages/Dashboards/Menu/";
 
 import Privacy from "../../Pages/Dashboards/PrivacyPolicy/";
 import Terms from "../../Pages/Dashboards/TermsOfService/";
@@ -66,6 +47,24 @@ import {
   TumblrIcon,
   EmailIcon,
 } from "react-share";
+
+const HomeDashboard = lazy(() =>
+  retry(() => import("../../Pages/Dashboards/Home/"))
+);
+
+const AccountPage = lazy(() =>
+  retry(() => import("../../Pages/Dashboards/Account/"))
+);
+
+const Contact = lazy(() =>
+  retry(() => import("../../Pages/Dashboards/Contact/"))
+);
+
+const Writing = lazy(() =>
+  retry(() => import("../../Pages/Dashboards/Writing/"))
+);
+
+const Menu = lazy(() => retry(() => import("../../Pages/Dashboards/Menu/")));
 
 function retry(fn, retriesLeft = 5, interval = 1000) {
   return new Promise((resolve, reject) => {
@@ -99,21 +98,6 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    history.pushState = ((f) =>
-      function pushState() {
-        var ret = f.apply(this, arguments);
-        window.dispatchEvent(new Event("pushstate"));
-        window.dispatchEvent(new Event("locationchange"));
-        return ret;
-      })(history.pushState);
-
-    history.replaceState = ((f) =>
-      function replaceState() {
-        var ret = f.apply(this, arguments);
-        window.dispatchEvent(new Event("locationchange"));
-        return ret;
-      })(history.replaceState);
-
     window.addEventListener("popstate", () => {
       window.dispatchEvent(new Event("locationchange"));
     });
@@ -202,6 +186,7 @@ class Main extends React.Component {
               );
             }
             if (!iOS) {
+              var caches;
               if (caches) {
                 caches.keys().then(function (names) {
                   for (let name of names) caches.delete(name);
@@ -248,175 +233,138 @@ class Main extends React.Component {
                 { "body-tabs-shadow-btn": enablePageTabsAlt }
               )}
             >
-              <App />
-              <Switch>
-                <Suspense
-                  fallback={
-                    <div className="loader-container">
-                      <div className="loader-container-inner">
-                        <div className="loader-wrapper d-flex justify-content-center align-items-center fadeIn">
-                          <Loader
-                            style={{
-                              transform: "scale(1.1)",
-                              top: "-100px",
-                              position: "relative",
-                              display: "center",
-                            }}
-                            color="#28bbDD"
-                            type="ball-zig-zag-deflect"
-                          />{" "}
-                          <Loader
-                            style={{
-                              transform: "scale(2.5)",
-                              top: "-100px",
-                              position: "relative",
-                              display: "center",
-                            }}
-                            color="#28bbBB"
-                            type="ball-zig-zag-deflect"
-                          />
-                        </div>
-                        <div className="text-center" style={{ color: "white" }}>
-                          Loading a`a Roots <br />
-                        </div>
-                        <br />
-                      </div>
-                    </div>
-                  }
-                >
-                  <ThemeOptions />
-                  <AppHeader />
-                  <div className="app-main">
-                    <AppSidebar />
-                    <div className="app-main__outer">
-                      <div className="app-main__inner">
-                        <Switch>
-                          <Route exact path="/" component={HomeDashboard} />
-                          <Route exact path="/home" component={HomeDashboard} />
-                          <Route path={`/menu`} component={Menu} />
-                          <Route path={`/account`} component={AccountPage} />
-                          <Route path={`/contact`} component={Contact} />
-                          <Route path={`/about`} component={Writing} />
-                          <Route path={`/privacy`} component={Privacy} />
-                          <Route path={`/termsofservice`} component={Terms} />
-                        </Switch>
-                        <br />
+              <ThemeOptions />
+              <AppHeader />
+              <div className="app-main">
+                <AppSidebar />
+                <div className="app-main__outer">
+                  <div className="app-main__inner">
+                    <Switch>
+                      <Route exact path="/" component={HomeDashboard} />
+                      <Route exact path="/home" component={HomeDashboard} />
+                      <Route path={`/menu`} component={Menu} />
+                      <Route path={`/account`} component={AccountPage} />
+                      <Route path={`/contact`} component={Contact} />
+                      <Route path={`/about`} component={Writing} />
+                      <Route path={`/privacy`} component={Privacy} />
+                      <Route path={`/termsofservice`} component={Terms} />
+                    </Switch>
+                    <br />
 
-                        <div id="footer">
-                          <span
-                            style={{
-                              width: "100%",
-                              textAlign: "center",
-                              float: "center",
-                              position: "relative",
-                              bottom: "0",
-                            }}
-                          >
-                            <div
-                              className="FooterText"
-                              style={{
-                                width: "100%",
-                                textAlign: "center",
-                                float: "center",
-                                position: "relative",
-                                bottom: "-10px",
-                              }}
+                    <div id="footer">
+                      <span
+                        style={{
+                          width: "100%",
+                          textAlign: "center",
+                          float: "center",
+                          position: "relative",
+                          bottom: "0",
+                        }}
+                      >
+                        <div
+                          className="FooterText"
+                          style={{
+                            width: "100%",
+                            textAlign: "center",
+                            float: "center",
+                            position: "relative",
+                            bottom: "-10px",
+                          }}
+                        >
+                          &nbsp;
+                          <b>a'a Roots : Maui's Best Vegan Experience</b>
+                          <br />
+                          <span className="Demo__some-network">
+                            <FacebookShareButton
+                              url={shareUrl}
+                              quote={title}
+                              className="Demo__some-network__share-button"
                             >
-                              &nbsp;
-                              <b>a'a Roots : Maui's Best Vegan Experience</b>
-                              <br />
-                              <span className="Demo__some-network">
-                                <FacebookShareButton
-                                  url={shareUrl}
-                                  quote={title}
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <FacebookIcon size={32} round />
-                                </FacebookShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <TwitterShareButton
-                                  url={shareUrl}
-                                  title={title}
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <TwitterIcon size={32} round />
-                                </TwitterShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <TelegramShareButton
-                                  url={shareUrl}
-                                  title={title}
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <TelegramIcon size={32} round />
-                                </TelegramShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <WhatsappShareButton
-                                  url={shareUrl}
-                                  title={title}
-                                  separator=":: "
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <WhatsappIcon size={32} round />
-                                </WhatsappShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <LinkedinShareButton
-                                  url={shareUrl}
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <LinkedinIcon size={32} round />
-                                </LinkedinShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <RedditShareButton
-                                  url={shareUrl}
-                                  title={title}
-                                  windowWidth={660}
-                                  windowHeight={460}
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <RedditIcon size={32} round />
-                                </RedditShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <TumblrShareButton
-                                  url={shareUrl}
-                                  title={title}
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <TumblrIcon size={32} round />
-                                </TumblrShareButton>
-                              </span>
-                              &nbsp;
-                              <span className="Demo__some-network">
-                                <EmailShareButton
-                                  url={shareUrl}
-                                  subject={title}
-                                  body="body"
-                                  className="Demo__some-network__share-button"
-                                >
-                                  <EmailIcon size={32} round />
-                                </EmailShareButton>
-                              </span>
-                            </div>
+                              <FacebookIcon size={32} round />
+                            </FacebookShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <TwitterShareButton
+                              url={shareUrl}
+                              title={title}
+                              className="Demo__some-network__share-button"
+                            >
+                              <TwitterIcon size={32} round />
+                            </TwitterShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <TelegramShareButton
+                              url={shareUrl}
+                              title={title}
+                              className="Demo__some-network__share-button"
+                            >
+                              <TelegramIcon size={32} round />
+                            </TelegramShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <WhatsappShareButton
+                              url={shareUrl}
+                              title={title}
+                              separator=":: "
+                              className="Demo__some-network__share-button"
+                            >
+                              <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <LinkedinShareButton
+                              url={shareUrl}
+                              className="Demo__some-network__share-button"
+                            >
+                              <LinkedinIcon size={32} round />
+                            </LinkedinShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <RedditShareButton
+                              url={shareUrl}
+                              title={title}
+                              windowWidth={660}
+                              windowHeight={460}
+                              className="Demo__some-network__share-button"
+                            >
+                              <RedditIcon size={32} round />
+                            </RedditShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <TumblrShareButton
+                              url={shareUrl}
+                              title={title}
+                              className="Demo__some-network__share-button"
+                            >
+                              <TumblrIcon size={32} round />
+                            </TumblrShareButton>
+                          </span>
+                          &nbsp;
+                          <span className="Demo__some-network">
+                            <EmailShareButton
+                              url={shareUrl}
+                              subject={title}
+                              body="body"
+                              className="Demo__some-network__share-button"
+                            >
+                              <EmailIcon size={32} round />
+                            </EmailShareButton>
                           </span>
                         </div>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                  <ToastContainer />
-                </Suspense>
-              </Switch>
-            </div>
+                </div>
+              </div>
+              <ToastContainer />
+            </div>{" "}
+
           </Fragment>
         )}
       />

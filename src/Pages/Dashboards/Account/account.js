@@ -88,7 +88,8 @@ function AccountElements() {
       } else {
         isInitialMount.current = false;
         if (hasLoaded === "2") {
-          loadSubmitUserListing() & sethasLoaded("3");
+          loadSubmitUserListing();
+          sethasLoaded("3");
         }
         if (hasLoaded === "3") {
           sethasLoaded("4");
@@ -181,8 +182,8 @@ function AccountElements() {
           <button
             style={{ borderRadius: "25px", textAlign: "center" }}
             onClick={() => {
-              formResetter() &
-                localStorage.setItem("gotDownloadURL", "Upload Image To Embed");
+              formResetter();
+              localStorage.setItem("gotDownloadURL", "Upload Image To Embed");
             }}
           >
             Reset Image Form
@@ -239,34 +240,6 @@ function AccountElements() {
     } catch (error) {}
   }
 
-  function postListingImage() {
-    console.log("x");
-    setproStatusText("Awaiting Initialize");
-    const formData = new FormData();
-    if (images != null) {
-      Array.from(images).forEach((image) => {
-        formData.append("files", image);
-      });
-      formData.Image = images[0];
-      axios
-        .post(`https://api.ponomap.com/upload`, formData, {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          if (res.err == null) {
-            document.getElementById("imageUpped").hidden = false;
-            console.log(res);
-            setactiveProURL("http://api.ponomap.com" + res.data[0].url);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
-
   function valueCheck() {
     if (!localStorage.getItem("localData3")) {
       localStorage.setItem("localData3", 0);
@@ -309,9 +282,9 @@ function AccountElements() {
                       "finListButton"
                     ).style.backgroundColor = "blue";
 
-                    setfinListButton("Send Listing"),
-                      setfinListButtonStatus("Ready To Publish"),
-                      setfinListButtonDisable(false);
+                    setfinListButton("Send Listing");
+                    setfinListButtonStatus("Ready To Publish");
+                    setfinListButtonDisable(false);
                   }
                 }
               }
@@ -339,15 +312,7 @@ function AccountElements() {
       setactiveTab(tab);
     }
   }
-  function submitContact() {
-    let { formName, formEmail, formMessage } = state;
 
-    if (formName.length !== null && formName.length < 1) {
-      alert("You must fill this form entirely.");
-    } else {
-      console.log("success");
-    }
-  }
   const auth = firebase.auth();
   return (
     <Fragment>

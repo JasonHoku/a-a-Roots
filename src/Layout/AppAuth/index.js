@@ -144,8 +144,8 @@ function AppAuth() {
                 fontSize: "15px",
               }}
               onClick={() => {
-                firebase.auth().signOut() &
-                  localStorage.setItem("username", null);
+                firebase.auth().signOut();
+                localStorage.setItem("username", null);
                 localStorage.setItem("jwt", null);
                 window.location.reload();
               }}
@@ -180,8 +180,8 @@ function AppAuth() {
                 zIndex: 9999,
               }}
               onClick={() => {
-                firebase.auth().signOut() &
-                  localStorage.setItem("username", null);
+                firebase.auth().signOut();
+                localStorage.setItem("username", null);
                 localStorage.setItem("jwt", null);
                 window.location.reload();
               }}
@@ -319,4 +319,3 @@ function AppAuth() {
   }
 }
 export default AppAuth;
-1;

@@ -60,18 +60,6 @@ function UserQueryComponent() {
   const [isLoadedOnce, setisLoadedOnce] = useState("1");
   const [file, setFile] = useState(null);
 
-  function handleInputChangeEvent(event) {
-    setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  useEffect(() => {
-    if (btnRef.current) {
-      setReady(true);
-    }
-  }, [btnRef]);
-
   useEffect(() => {
     let concData = [];
     let concData2 = [];
@@ -123,7 +111,8 @@ function UserQueryComponent() {
       }
       setstatusVar(
         "Viewing " + categoryVar + " " + loadedEzID + " of: " + loadedTotalIDs
-      ) & setloadStage("3");
+      );
+      setloadStage("3");
     }
     if (loadStage === "3") {
       setloadStage("4");
@@ -149,22 +138,6 @@ function UserQueryComponent() {
   function outFunc() {
     var tooltip = document.getElementById("myTooltip");
     tooltip.innerHTML = "Copy to clipboard";
-  }
-  function handleUpload(e) {
-    const storage = firebase.storage();
-    e.preventDefault();
-    const uploadTask = storage.ref(`/listings/${file.name}`).put(file);
-    uploadTask.on("state_changed", console.log, console.error, () => {
-      storage
-        .ref("listings")
-        .child(file.name)
-        .getDownloadURL()
-        .then((url) => {
-          setFile(null);
-          setURL(url);
-          setloadedImgURL(url);
-        });
-    });
   }
 
   function handleChange(e) {
@@ -278,8 +251,8 @@ function UserQueryComponent() {
               <small>
                 Username:
                 <input
-                  onChange={() =>
-                    setloadedUsername(event.target.value) & setloadStage("3")
+                  onChange={(e) =>
+                    setloadedUsername(e.target.value) & setloadStage("3")
                   }
                   value={loadedUsername}
                   name="loadedUsername"
@@ -288,8 +261,8 @@ function UserQueryComponent() {
                 <br />
                 Email:
                 <input
-                  onChange={() =>
-                    setloadedEmail(event.target.value) & setloadStage("3")
+                  onChange={(e) =>
+                    setloadedEmail(e.target.value) & setloadStage("3")
                   }
                   value={loadedEmail}
                   name="loadedEmail"
@@ -298,8 +271,8 @@ function UserQueryComponent() {
                 <br />
                 UserMeta:
                 <input
-                  onChange={() =>
-                    setloadedUserMeta(event.target.value) & setloadStage("3")
+                  onChange={(e) =>
+                    setloadedUserMeta(e.target.value) & setloadStage("3")
                   }
                   value={loadedUserMeta}
                   name="loadedUserMeta"

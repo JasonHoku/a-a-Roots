@@ -92,32 +92,12 @@ class EventManagerComponent extends Component {
         });
     }
   };
-  startTimer() {
-    if (!this.timerId) {
-      this.timerId = setInterval(() => {
-        console.log("B");
-        this.setState({
-          timeNow: Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          }).format(Date.now()),
-        }),
-          1000;
-      }, setState(nextState, callback));
-    }
-  }
 
   stopTimer() {
     clearInterval(this.timerId);
   }
   componentDidMount() {}
-  componentWillUnmount() {
-    this.stopTimer;
-  }
+
   onImageChange = (event) => {
     console.log(event.target.files);
 

@@ -173,7 +173,7 @@ class NoteManagerComponent extends Component {
           </div>
           <input
             type="number"
-            onChange={() => this.handleInputChange2(event)}
+            onChange={(event) => this.handleInputChange2(event)}
             style={{ width: "50px" }}
           ></input>{" "}
           &nbsp;
@@ -182,7 +182,7 @@ class NoteManagerComponent extends Component {
             value={this.state.noteVar}
             name="NoteVar"
             id="NoteVar"
-            onChange={() => this.handleInputChange(event)}
+            onChange={(event) => this.handleInputChange(event)}
             style={{ top: "15px", position: "relative" }}
             type="textarea"
           ></Input>{" "}
