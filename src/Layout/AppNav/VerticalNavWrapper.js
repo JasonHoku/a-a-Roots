@@ -88,14 +88,17 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              height:"125%",
-              marginBottom: "15px", position: "relative" }}
+              height: "125%",
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
-              style={{ position: "relative", top: "-3px", left: "-15px" }}
+              style={{ position: "relative", top: "-3px", left: "-5px" }}
             >
               <svg className="spin2" height="25px" width="25px">
                 <GiAtom />
@@ -116,13 +119,16 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
-              style={{ position: "relative", top: "-3px", left: "-15px" }}
+              style={{ position: "relative", top: "-3px", left: "-5px" }}
             >
               <MdRestaurantMenu />
               &nbsp;&nbsp;&nbsp;
@@ -143,13 +149,16 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
-              style={{ position: "relative", top: "-3px", left: "-15px" }}
+              style={{ position: "relative", top: "-3px", left: "-5px" }}
             >
               <IoIosInformationCircleOutline />
               &nbsp;&nbsp;&nbsp;
@@ -168,13 +177,16 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
-              style={{ position: "relative", top: "-3px", left: "-15px" }}
+              style={{ position: "relative", top: "-3px", left: "-5px" }}
             >
               <GoMailRead />
               &nbsp;&nbsp;&nbsp;
@@ -195,13 +207,16 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
-              style={{ position: "relative", top: "-3px", left: "-15px" }}
+              style={{ position: "relative", top: "-3px", left: "-5px" }}
             >
               <VscAccount />
               &nbsp;&nbsp;&nbsp;
@@ -242,6 +257,7 @@ export default function Nav() {
           }}
         >
           <img
+            alt="a`a roots logo"
             src="/logoHorizontal.webp"
             style={{
               width: "100%",
@@ -252,8 +268,8 @@ export default function Nav() {
               top: "50%",
               verticalAlign: "middle",
               alignItems: "center",
-              minWidth:"50px",
-              left:"-15px",
+              minWidth: "50px",
+              left: "-15px",
             }}
           ></img>
         </div>
@@ -293,9 +309,12 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
@@ -320,9 +339,12 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
@@ -345,9 +367,12 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"
@@ -372,9 +397,12 @@ export default function Nav() {
         <h4>
           <button
             className="gradientBtn"
-            style={{ width: "115%",
+            style={{
+              width: "115%",
               marginTop: "15px",
-              marginBottom: "15px", position: "relative" }}
+              marginBottom: "15px",
+              position: "relative",
+            }}
           >
             <span
               className="metismenu-item"

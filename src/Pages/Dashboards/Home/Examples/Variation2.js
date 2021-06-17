@@ -74,10 +74,10 @@ export default class CRMDashboard2 extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>A'a Roots Home: Discover, Order, Grow.</title>
+          <title>A`a Roots Home: Discover, Order, Grow.</title>
           <meta
             name="description"
-            content="Join a`a Roots in plotting Hawaii's ecosystem into intuitive and powerful technologies."
+            content="Join A`a Roots in plotting Hawaii's ecosystem into intuitive and powerful technologies."
           />
           <link rel="canonical" href="https://AaRoots.com/home" />
         </Helmet>
@@ -117,10 +117,10 @@ export default class CRMDashboard2 extends Component {
               className="homePageHeader"
             >
               <h1 style={{ color: "white", textAlign: "center" }}>
-                WELCOME TO A'A ROOTS
+                WELCOME TO A`A ROOTS
               </h1>
               <h2 style={{ color: "white", textAlign: "center" }}>
-                Specializing in Vegan Cuisine
+                Specializing In Vegan Cuisine
                 <br />
                 <br />
                 <Link to="/menu">
@@ -153,9 +153,16 @@ export default class CRMDashboard2 extends Component {
                   textAlign: "center",
                 }}
               >
-                <h2> Thank You For Visiting! 🌱</h2> <br />
+                <h2>
+                  {" "}
+                  Thank You For Visiting!{" "}
+                  <span aria-label="sprout emoji" role="img">
+                    🌱
+                  </span>
+                </h2>
+                <br />
                 <h3>
-                  a’a Roots revolves around being health-conscious and
+                  A`a Roots revolves around being health-conscious and
                   eco-friendly. We thrive to prepare fresh, locally sourced,
                   vegan dishes, along with freshly pressed juices and smoothies
                   that are infused with superfoods.
@@ -176,8 +183,33 @@ export default class CRMDashboard2 extends Component {
                   </Button>
                 </Link>
                 <br />
-                <br />
-                <div id="InsFd1"></div>
+                <br /> <br />{" "}
+                <div>
+                  <h4>
+                    <p>
+                      &nbsp;For daily specials and new items, follow us on
+                      Instagram or call us!
+                    </p>
+                    <center>
+                      <p>
+                        <a
+                          href="https://www.instagram.com/aarootsmaui/"
+                          target="_blank"
+                        >
+                          <strong>@aarootsmaui</strong>
+                        </a>
+                        <strong> </strong>
+                      </p>
+                      <p>(808) 298-2499</p>
+                    </center>
+                  </h4>
+                </div>
+                <br /> <br />
+                <div>
+                  Servicing Napili, Hokonkawai, Kapalua, Lahaina area residents
+                  through local vegan, vegetarian, high quality, organic,
+                  nutritious and delicious recipes.
+                </div>
               </CardBody>
               <br />
             </Card>

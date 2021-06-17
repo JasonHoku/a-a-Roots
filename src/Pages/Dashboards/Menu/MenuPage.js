@@ -353,9 +353,29 @@ export default function CRMDashboard2() {
                   <span>
                     <img
                       hidden={el.ImgURL === ""}
+                      id={"menuImg" + el.Title}
+                      onClick={() => {
+                        setSelectedImgModalState({
+                          src: el.ImgURL,
+                          title: el.Title,
+                        });
+                        handleOpen2();
+                      }}
+                      onMouseOver={() => {
+                        document.getElementById(
+                          "menuImg" + el.Title
+                        ).style.transform = "scale(1.5)";
+                      }}
+                      onMouseLeave={() => {
+                        document.getElementById(
+                          "menuImg" + el.Title
+                        ).style.transform = "scale(1)";
+                      }}
+                      alt={el.title}
                       style={{
                         maxWidth: "75px",
                         borderRadius: "25px",
+                        zIndex: 205,
                       }}
                       src={el.ImgURL}
                     ></img>
@@ -486,13 +506,6 @@ export default function CRMDashboard2() {
                 }}
               >
                 <div>
-                  <br />
-                  <p
-                    style={{
-                      float: "none",
-                      maxWidth: "100%",
-                    }}
-                  ></p>
                   <h2>
                     <p>
                       &nbsp;For daily specials and new items, follow us on
@@ -511,14 +524,13 @@ export default function CRMDashboard2() {
                       <p>(808) 298-2499</p>
                     </center>
                   </h2>
-                  <p></p>
-                  <p></p>
                 </div>
               </CardBody>
-
               <CardBody
                 style={{
                   maxWidth: "100%",
+                  position: "relative",
+                  top: "-25px",
                 }}
               >
                 <center>
@@ -526,8 +538,11 @@ export default function CRMDashboard2() {
                     variant="contained"
                     color="primary"
                     onClick={handleClick}
+                    style={{ fontSize: "22px" }}
                   >
-                    Browse By Category
+                    <span style={{ position: "relative", top: "-5px" }}>
+                      Browse Menu By Category
+                    </span>
                   </Button>
                 </center>
                 <Popover
@@ -594,11 +609,13 @@ export default function CRMDashboard2() {
             <h2 id="spring-modal-title">{selectedImgModalState.title}</h2>
             <br />
             <div>
-              <img
-                style={{ maxWidth: window.innerWidth - 75 }}
-                src={selectedImgModalState.src}
-                alt={selectedImgModalState.title}
-              />
+              <center>
+                <img
+                  style={{ maxWidth: window.innerWidth - 75 }}
+                  src={selectedImgModalState.src}
+                  alt={selectedImgModalState.title}
+                />
+              </center>
             </div>
           </div>
         </Modal>
