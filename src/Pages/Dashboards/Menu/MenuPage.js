@@ -38,12 +38,18 @@ import "firebase/firestore";
 import { makeStyles } from "@material-ui/core/styles";
 import Popover from "@material-ui/core/Popover";
 
+import Modal from "@material-ui/core/Modal";
+
 export default function CRMDashboard2() {
   const [gotMenuData, setGotMenuData] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [categoryListSet, setCategoryListSet] = useState([]);
   const [categorizedMenuArray, setCategorizedMenuArray] = useState([]);
   const [renderedMenuItemsArray, setRenderedMenuItemsArray] = useState([]);
+  const [selectedImgModalState, setSelectedImgModalState] = useState({
+    title: "",
+    src: "",
+  });
 
   const loadStageRef = useRef(0);
   const isInitialMount = useRef(true);
@@ -51,6 +57,37 @@ export default function CRMDashboard2() {
   const [dataArrayState, setDataArrayState] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  const useStyles2 = makeStyles((theme) => ({
+    modal: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: "2px solid #000",
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }));
+
+  const classes2 = useStyles2();
+  const [open2, setOpen2] = React.useState(false);
+
+  const handleOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+
+    setSelectedImgModalState({
+      src: "",
+      title: "",
+    });
+  };
+
+  // PopOver
   const useStyles = makeStyles((theme) => ({
     typography: {
       padding: theme.spacing(2),
@@ -224,14 +261,35 @@ export default function CRMDashboard2() {
                       }}
                     >
                       {el.Title}
+
                       <img
+                        id={"menuImg" + el.Title}
+                        onClick={() => {
+                          setSelectedImgModalState({
+                            src: el.ImgURL,
+                            title: el.Title,
+                          });
+                          handleOpen2();
+                        }}
+                        onMouseOver={() => {
+                          document.getElementById(
+                            "menuImg" + el.Title
+                          ).style.transform = "scale(1.5)";
+                        }}
+                        onMouseLeave={() => {
+                          document.getElementById(
+                            "menuImg" + el.Title
+                          ).style.transform = "scale(1)";
+                        }}
+                        alt={el.title}
                         style={{
                           maxWidth: "75px",
                           borderRadius: "25px",
+                          zIndex: 205,
                         }}
                         src={el.ImgURL}
                       ></img>
-                    </span>{" "}
+                    </span>
                     &nbsp;
                     <span>{el.Price}</span>
                     {/* <br /> */}
@@ -519,6 +577,32 @@ export default function CRMDashboard2() {
           </Col>
         </Row>
       </CSSTransitionGroup>
+      <span>
+        <Modal
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <div className={classes2.paper}>
+            <br />
+            <span style={{ float: "right" }}>
+              {" "}
+              <button onClick={handleClose2}>X</button>{" "}
+            </span>
+            <br />
+            <h2 id="spring-modal-title">{selectedImgModalState.title}</h2>
+            <br />
+            <div>
+              <img
+                style={{ maxWidth: window.innerWidth - 75 }}
+                src={selectedImgModalState.src}
+                alt={selectedImgModalState.title}
+              />
+            </div>
+          </div>
+        </Modal>
+      </span>
     </Fragment>
   );
 }

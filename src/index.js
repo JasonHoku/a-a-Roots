@@ -53,7 +53,7 @@ ReactDOM.render(
       </div>
     }
   >
-    <span style={{ position: "fixed", zIndex: 0 }} id="bgEffectDOM"></span>
+
     <Provider store={store}>
       <Router>
         <Main />
