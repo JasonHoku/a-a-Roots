@@ -206,7 +206,7 @@ export default class CRMDashboard2 extends Component {
                 </div>
                 <br /> <br />
                 <div>
-                  Servicing Napili, Hokonkawai, Kapalua, Lahaina area residents
+                  Servicing Napili, Honokowai, Kapalua, Lahaina and nearby residents
                   through local vegan, vegetarian, high quality, organic,
                   nutritious and delicious recipes.
                 </div>
