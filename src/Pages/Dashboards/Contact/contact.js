@@ -173,9 +173,9 @@ export default class ContactElements extends Component {
           <title>a`a Roots Contact</title>
           <meta
             name="description"
-            content="Easily reach the a`a Roots team through this web page."
+            content="Easily reach the A`a Roots team through this web page."
           />
-          <link rel="canonical" href="https://a-a-roots.web.app/services" />
+          <link rel="canonical" href="https://a-a-roots.web.app/contact" />
         </Helmet>
         <CSSTransitionGroup
           component="div"

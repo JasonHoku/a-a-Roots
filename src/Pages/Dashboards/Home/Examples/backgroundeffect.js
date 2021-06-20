@@ -20,20 +20,23 @@ setTimeout(() => {
     init();
     animate();
   } else {
-    setTimeout(() => {
-      if (document.querySelector("#bgEffectDOM")) {
-        init();
-        animate();
-      } else {
-        setTimeout(() => {
-          if (document.querySelector("#bgEffectDOM")) {
-            init();
-            animate();
-          } else {
-          }
-        }, 250);
-      }
-    }, 250);
+
+setTimeout(() => {
+  if (document.querySelector("#bgEffectDOM")) {
+    init();
+    animate();
+  } else {
+
+setTimeout(() => {
+  if (document.querySelector("#bgEffectDOM")) {
+    init();
+    animate();
+  } else {
+
+  }
+}, 250);
+  }
+}, 250);
   }
 }, 250);
 

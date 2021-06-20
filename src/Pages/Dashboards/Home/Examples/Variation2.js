@@ -74,12 +74,14 @@ export default class CRMDashboard2 extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>A`a Roots Home: Discover, Order, Grow.</title>
+          <title>
+            A`a Roots: Specializing In Vegetarian and Vegan Cuisine.
+          </title>
           <meta
             name="description"
-            content="Join A`a Roots in plotting Hawaii's ecosystem into intuitive and powerful technologies."
+            content="A`a Roots revolves around being health-conscious and eco-friendly. We thrive to prepare fresh, locally sourced, vegan dishes, along with freshly pressed juices and smoothies that are infused with superfoods."
           />
-          <link rel="canonical" href="https://AaRoots.com/home" />
+          <link rel="canonical" href="https://a-a-roots.web.app/home" />
         </Helmet>
         <CSSTransitionGroup
           component="div"
@@ -97,8 +99,6 @@ export default class CRMDashboard2 extends Component {
               left: "0px",
               top: "80px",
               opacity: 0,
-              background: "#000000",
-
               background:
                 "linear-gradient(to bottom, rgba(0, 0, 0, 0.50) 100%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.95) 100%), url(/images/homeimage.jpg)",
               backgroundPosition: "center",
@@ -206,9 +206,9 @@ export default class CRMDashboard2 extends Component {
                 </div>
                 <br /> <br />
                 <div>
-                  Servicing Napili, Honokowai, Kapalua, Lahaina and nearby residents
-                  through local vegan, vegetarian, high quality, organic,
-                  nutritious and delicious recipes.
+                  Servicing Napili, Honokowai, Kapalua, Lahaina and nearby
+                  residents through local vegan, vegetarian, high quality,
+                  organic, nutritious and delicious recipes.
                 </div>
               </CardBody>
               <br />

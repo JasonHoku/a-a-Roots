@@ -456,7 +456,7 @@ export default function CRMDashboard2() {
         <title>a`a Roots Menu</title>
         <meta
           name="description"
-          content="Smoothies, Burritos, Bowls & More. @ The a`a Roots Menu."
+          content="Browse Through Smoothies, Burritos, Bowls, Wraps & More. @ The A`a Roots Menu."
         />
         <link rel="canonical" href="https://a-a-roots.web.app/menu" />
       </Helmet>

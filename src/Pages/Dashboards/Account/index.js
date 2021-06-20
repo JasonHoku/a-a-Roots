@@ -8,6 +8,8 @@ import React, {
 } from "react";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
+import { Helmet } from "react-helmet";
+
 import { unregister } from "../../../serviceWorker";
 import AppAuth from "../../../Layout/AppAuth/index.js";
 
@@ -125,6 +127,14 @@ function AccountPage() {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Aa`a Roots Account Management</title>
+        <meta
+          name="description"
+          content="Access A`a Roots account tools at this webpage."
+        />
+        <link rel="canonical" href="https://a-a-roots.web.app/account" />
+      </Helmet>
       <Card
         className="AccountBackground"
         style={{

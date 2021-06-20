@@ -67,12 +67,12 @@ export default class WritingElements extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>a`a Roots About</title>
+          <title>A`a Roots About</title>
           <meta
             name="description"
-            content="Explore and initiate sustainable services provided by a`a Roots."
+            content="Learn about A`a Roots at this informative webpage."
           />
-          <link rel="canonical" href="https://a-a-roots.web.app/services" />
+          <link rel="canonical" href="https://a-a-roots.web.app/about" />
         </Helmet>
         <CSSTransitionGroup
           component="div"
