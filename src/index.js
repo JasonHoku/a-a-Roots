@@ -37,6 +37,8 @@ window.addEventListener("error", (e) => {
   console.log("Custom Error Detection");
   console.log(e);
   console.log(e.message);
+  if (window.location.hostname !== "localhost") {
+
   firebase
     .firestore()
     .collection("ErrorLogs")
@@ -47,6 +49,8 @@ window.addEventListener("error", (e) => {
         "An error has been detected and is being reported to administration. "
       );
     });
+  }
+
 });
 
 ReactDOM.render(

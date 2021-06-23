@@ -4,6 +4,8 @@ import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 import { FaCartPlus } from "react-icons/fa";
 
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+
 import {
   Row,
   Col,
@@ -53,11 +55,49 @@ export default function CRMDashboard2() {
     src: "",
   });
 
+  const [hasReceivedImgURL, sethasReceivedImgURL] = useState(false);
+
+  const [loadedDescriptionData, setloadedDescriptionData] = useState("");
+  const [loadedPriceData, setloadedPriceData] = useState("");
+  const [loadedLastSave, setloadedLastSave] = useState("");
+  const [loadedCategory, setloadedCategory] = useState("");
+  const [loadedPublic, setloadedPublic] = useState("");
+  const [loadedTitleData, setloadedTitleData] = useState("");
+
   const loadStageRef = useRef(0);
   const isInitialMount = useRef(true);
 
   const [dataArrayState, setDataArrayState] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  const [url, setURL] = useState("");
+
+  const [loadedImgURL, setloadedImgURL] = useState("");
+
+  const [file, setFile] = useState(null);
+
+  function handleChange(e) {
+    setFile(e.target.files[0]);
+  }
+
+  function handleUpload(e) {
+    const storage = firebase.storage();
+    e.preventDefault();
+    const uploadTask = storage.ref(`/submissions/${file.name}`).put(file);
+    uploadTask.on("state_changed", console.log, console.error, () => {
+      storage
+        .ref("submissions")
+        .child(file.name)
+        .getDownloadURL()
+        .then((url) => {
+          setFile(null);
+          setURL(url);
+          setloadedImgURL(url);
+          sethasReceivedImgURL(true);
+          console.log(url);
+        });
+    });
+  }
 
   const useStyles2 = makeStyles((theme) => ({
     modal: {
@@ -87,6 +127,16 @@ export default function CRMDashboard2() {
       src: "",
       title: "",
     });
+  };
+
+  const [open3, setOpen3] = React.useState(false);
+
+  const handleOpen3 = () => {
+    setOpen3(true);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
   };
 
   // PopOver
@@ -169,6 +219,42 @@ export default function CRMDashboard2() {
       isInitialMount.current = false;
     }
   });
+
+  async function runSendData() {
+    if (
+      window.confirm(
+        `
+        Are you sure you want to save:
+        \n
+        ${loadedCategory}
+        ${loadedTitleData}
+        ${loadedPriceData}
+        ${loadedDescriptionData}
+        ${loadedImgURL}
+        `
+      )
+    ) {
+      firebase
+        .firestore()
+        .collection("MenuSubmissions")
+        .doc()
+        .set({
+          Price: loadedPriceData,
+          Available: loadedPublic,
+          Title: loadedTitleData,
+          LastSave: firebase.firestore.FieldValue.serverTimestamp(),
+          Description: loadedDescriptionData,
+          Category: loadedCategory,
+          ImgURL: loadedImgURL,
+        })
+        .then(() => {
+          //
+        });
+      alert("Your request has been received!");
+    } else {
+      // Do nothing!
+    }
+  }
 
   function decideRenderMenu() {
     gotMenuData.sort(sort_by("Category", true, (a) => a.toUpperCase()));
@@ -507,7 +593,6 @@ export default function CRMDashboard2() {
                 <h1>a`a Roots: Menu</h1>
               </CardHeader>
               <br />
-
               <CardBody
                 style={{
                   display: "flex",
@@ -598,6 +683,28 @@ export default function CRMDashboard2() {
                 </Popover>
                 &nbsp; <br />
                 <Row>{decideRenderMenu()}</Row>
+              </CardBody>{" "}
+              <CardBody>
+                <Row>
+                  <Col
+                    style={{
+                      textAlign: "center",
+                      position: "relative",
+                      left: "-50px",
+                    }}
+                  >
+                    <button
+                      onClick={() => {
+                        handleOpen3();
+                      }}
+                      style={{
+                        borderRadius: "25px",
+                      }}
+                    >
+                      See something we're missing?
+                    </button>
+                  </Col>
+                </Row>
               </CardBody>
             </Card>
           </Col>
@@ -627,6 +734,168 @@ export default function CRMDashboard2() {
                   alt={selectedImgModalState.title}
                 />
               </center>
+            </div>
+          </div>
+        </Modal>
+      </span>
+      <span>
+        <Modal
+          open={open3}
+          onClose={handleClose3}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <div className={classes2.paper}>
+            <br />
+            <span style={{ float: "right" }}>
+              <button onClick={handleClose3}>X</button>
+            </span>
+            <br />
+            <h2 id="spring-modal-title"> Menu Item Submission</h2>
+            <br />
+            <div>
+              <div
+                style={{
+                  boxShadow: "0px 0px 0px 2px rgba(50,50,50, .8)",
+                  alignContent: "center",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  maxWidth: "500px",
+                  margin: "auto",
+                }}
+              >
+                <Row style={{ margin: "auto" }}>
+                  <h2>
+                    Thank you for your interest in improving the A`A Roots
+                    online menu.
+                  </h2>{" "}
+                  <br />
+                  <h5>
+                    Fill out as much as you can, add a picture or simply report
+                    a missing item.
+                  </h5>{" "}
+                  <br /> <br />
+                  <Col>
+                    <b>
+                      Category:
+                      <br />
+                    </b>
+                    <TextareaAutosize
+                      type="textarea"
+                      aria-label="minimum height"
+                      rowsMin={1}
+                      placeholder=""
+                      style={{
+                        width: "100%",
+                        maxWidth: "300px",
+                        minWidth: "175px",
+                        textAlign: "center",
+                      }}
+                      value={String(loadedCategory)}
+                      onChange={(e) => {
+                        setloadedCategory(e.target.value);
+                      }}
+                    ></TextareaAutosize>
+                  </Col>
+                </Row>
+                <Col>
+                  <b>Title</b>:<br />
+                  <TextareaAutosize
+                    style={{
+                      width: "100%",
+                      maxWidth: "300px",
+                      minWidth: "175px",
+                      textAlign: "center",
+                    }}
+                    value={String(loadedTitleData)}
+                    onChange={(e) => {
+                      setloadedTitleData(e.target.value);
+                    }}
+                    aria-label="minimum height"
+                    rowsMin={1}
+                    placeholder=""
+                  />
+                </Col>
+                <Row>
+                  <Col>
+                    <b>Price</b>:<br />
+                    <input
+                      style={{ width: "100px" }}
+                      value={String(loadedPriceData)}
+                      onChange={(e) => {
+                        setloadedPriceData(e.target.value);
+                      }}
+                    ></input>
+                  </Col>
+                </Row>{" "}
+                <br />
+                <Row>
+                  <Col>
+                    <b>
+                      Description:
+                      <br />
+                    </b>
+                    <TextareaAutosize
+                      type="textarea"
+                      aria-label="minimum height"
+                      rowsMin={2}
+                      placeholder=""
+                      style={{
+                        width: "100%",
+                        maxWidth: "300px",
+                        minWidth: "175px",
+                      }}
+                      value={String(loadedDescriptionData)}
+                      onChange={(e) => {
+                        setloadedDescriptionData(e.target.value);
+                      }}
+                    ></TextareaAutosize>
+                  </Col>
+                </Row>
+                <br />
+                <form
+                  role="imgForm"
+                  name="imgForm"
+                  id="imgForm"
+                  onSubmit={handleUpload}
+                >
+                  <input type="file" onChange={handleChange} />
+                  <Button
+                    hidden={!file}
+                    fill="true"
+                    color="primary"
+                    disabled={!file}
+                    style={{
+                      alignSelf: "center",
+                      justifySelf: "center",
+                      display: "block",
+                      position: "relative",
+                      width: "55%",
+                    }}
+                    type="submit"
+                  >
+                    <h5 style={{ position: "relative", top: "-2px" }}>
+                      Upload Image
+                    </h5>
+                  </Button>{" "}
+                </form>
+                <img
+                  hidden={!hasReceivedImgURL}
+                  style={{ maxWidth: "150px" }}
+                  src={url}
+                  alt=""
+                />{" "}
+                <br />
+                <button
+                  onClick={() => {
+                    runSendData();
+                  }}
+                >
+                  Send
+                </button>
+                <br />
+              </div>
             </div>
           </div>
         </Modal>
