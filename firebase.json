@@ -4,14 +4,14 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "//sitemap.xml",
+        "destination": "/sitemap.xml"
       }
     ],
     "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   },
   "firestore": {
     "rules": "firestore.rules",

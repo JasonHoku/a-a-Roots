@@ -28,9 +28,26 @@ import CheckVersions from "./Pages/Main/checkVersions";
 import "firebaseui/dist/firebaseui.css";
 
 import "./Pages/Dashboards/Home/Examples/backgroundeffect";
+import firebase from "firebase/app";
 
 const store = configureStore();
 const rootElement = document.getElementById("root");
+
+window.addEventListener("error", (e) => {
+  console.log("Custom Error Detection");
+  console.log(e);
+  console.log(e.message);
+  firebase
+    .firestore()
+    .collection("ErrorLogs")
+    .doc()
+    .set({ errorMessage: e.message })
+    .then(() => {
+      alert(
+        "An error has been detected and is being reported to administration. "
+      );
+    });
+});
 
 ReactDOM.render(
   <Suspense
@@ -53,7 +70,6 @@ ReactDOM.render(
       </div>
     }
   >
-
     <Provider store={store}>
       <Router>
         <Main />

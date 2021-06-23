@@ -260,12 +260,6 @@ function ModeratorElements() {
     }
   }
 
-
-  function loadUserQueryComponent(props) {
-    if (activeTab === "Users") {
-      return <UserQueryComponent />;
-    }
-  }
   function loadListingManagerComponent() {
     if (activeTab === "Listing Manager") {
       return <ListingManagerComponent />;
@@ -275,11 +269,6 @@ function ModeratorElements() {
   function loadEventManagerComponent(props) {
     if (activeTab === "Events") {
       return <EventManagerComponent />;
-    }
-  }
-  function loadContentManagerComponent(props) {
-    if (activeTab === "Content") {
-      return <ContentManagerComponent />;
     }
   }
 
@@ -312,11 +301,6 @@ function ModeratorElements() {
     }
   }
 
-  function valueCheck() {
-    if (!localStorage.getItem("localData3")) {
-      localStorage.setItem("localData3", 0);
-    }
-  }
   return (
     <Fragment>
       <Container
@@ -434,7 +418,6 @@ function ModeratorElements() {
                 &nbsp;
                 <button
                   style={{
-                    marginTop: "10px",
                     backgroundColor: "#006666",
                     borderRadius: "16px",
                     height: "35px",
@@ -463,7 +446,6 @@ function ModeratorElements() {
                 &nbsp;
                 <button
                   style={{
-                    marginTop: "10px",
                     backgroundColor: "#0033AA",
                     borderRadius: "16px",
                     height: "35px",
@@ -491,7 +473,6 @@ function ModeratorElements() {
                 &nbsp;
                 <button
                   style={{
-                    marginTop: "10px",
                     backgroundColor: "#0000CC",
                     borderRadius: "16px",
                     height: "35px",
@@ -827,7 +808,6 @@ function ModeratorElements() {
             {loadContentManagerComponent()}
             <br />
           </TabPane>
-
           <TabPane tabId="Surveys">
             <Row style={{ justifyContent: "center" }}>
               {" "}
@@ -843,7 +823,7 @@ function ModeratorElements() {
               </Card>
             </Row>
           </TabPane>
-               <TabPane tabId="Video">
+          <TabPane tabId="Video">
             <Row style={{ justifyContent: "center" }}>
               {" "}
               <Card
@@ -863,7 +843,6 @@ function ModeratorElements() {
             {loadListingManagerComponent()}
             <br />
           </TabPane>
-
         </TabContent>
         <br />
       </Container>

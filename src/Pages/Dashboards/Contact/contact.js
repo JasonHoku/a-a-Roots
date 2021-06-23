@@ -170,7 +170,7 @@ export default class ContactElements extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>a`a Roots Contact</title>
+          <title>A`a Roots Contact</title>
           <meta
             name="description"
             content="Easily reach the A`a Roots team through this web page."

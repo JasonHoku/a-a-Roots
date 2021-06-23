@@ -140,7 +140,7 @@ export default function CRMDashboard2() {
         let gotLoadedObjectData = [];
         let gameObjectData = {};
         var db = firebase.firestore();
-        db.collection("MenuItems")
+        db.collection("Menu")
           .get()
           .then((userData) => {
             userData.forEach((doc) => {
@@ -151,6 +151,7 @@ export default function CRMDashboard2() {
             });
             let dbDataArray = Object.values(dbData);
             //Check Through Array of User Collections
+
             setDataArrayState(dbDataArray);
             console.log(dbDataArray);
             setGotMenuData(dbDataArray);
@@ -189,7 +190,7 @@ export default function CRMDashboard2() {
         categoryList.push(el.Category);
       categoryList.forEach((el2, index) => {
         if (el.Available)
-          if (!JSON.stringify(renderedMenuItemsArray).includes(el.ID)) {
+          if (!JSON.stringify(renderedMenuItemsArray).includes(el.Title)) {
             if (
               !JSON.stringify(tempParsedCategories).includes(
                 JSON.stringify(el.Category)
@@ -212,7 +213,7 @@ export default function CRMDashboard2() {
               console.log(el.Category);
               console.log(window.CategoryCounter);
 
-              renderedMenuItemsArray.push(el.ID);
+              renderedMenuItemsArray.push(el.Title);
               categorizedMenuArray.push(
                 <div
                   style={{
@@ -293,7 +294,15 @@ export default function CRMDashboard2() {
                       ></img>
                     </span>
                     &nbsp;
-                    <span>{el.Price}</span>
+                    <span
+                      style={{
+                        fontSize: "22px",
+                        fontWeight: 600,
+                        fontFamily: `"Montserrat", sans-serif`,
+                      }}
+                    >
+                      &nbsp;{el.Price}
+                    </span>
                     {/* <br /> */}
                     <button
                       hidden
@@ -324,7 +333,7 @@ export default function CRMDashboard2() {
               console.log(" Category Already Exists");
               console.log(el.Category);
 
-              renderedMenuItemsArray.push(el.ID);
+              renderedMenuItemsArray.push(el.Title);
               categorizedMenuArray.splice(
                 index - window.ItemCatCount,
                 0,

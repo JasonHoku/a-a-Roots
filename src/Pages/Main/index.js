@@ -85,7 +85,7 @@ function retry(fn, retriesLeft = 5, interval = 1000) {
   });
 }
 
-let shareUrl = "https://AaRoots.com/";
+let shareUrl = "https://a-a-roots.web.app/";
 let title = "Feed Yourself Healthy With A'a Roots.";
 
 class Main extends React.Component {
@@ -364,7 +364,6 @@ class Main extends React.Component {
               </div>
               <ToastContainer />
             </div>{" "}
-
           </Fragment>
         )}
       />

@@ -1,6 +1,6 @@
 {
     "name": "a-a-roots-web",
-    "version": "1.77.0",
+    "version": "1.86.0",
     "homepage": "https://a-a-roots.web.app/",
     "private": true,
     "dependencies": {

@@ -79,7 +79,7 @@ function EditMenuComponent() {
   const [hasReceivedImgURL, sethasReceivedImgURL] = useState(false);
   const [gotLoadedObjectData, setgotLoadedObjectData] = useState("");
   const [gotLoadedObjectDataIDs, setgotLoadedObjectDataIDs] = useState("");
-  const [categoryVar, setcategoryVar] = useState("MenuItems");
+  const [categoryVar, setcategoryVar] = useState("Menu");
   const [file, setFile] = useState(null);
   const [dataArrayState, setDataArrayState] = useState([]);
   const [gotDownloadURL, setgotDownloadURL] = useState(
@@ -266,17 +266,41 @@ function EditMenuComponent() {
     setFile(e.target.files[0]);
   }
 
-  function runSendData() {
-    firebase.firestore().collection("MenuItems").doc(String(loadedEzID)).set({
-      Price: loadedPriceData,
-      Available: loadedPublic,
-      ID: loadedEzID,
-      Title: loadedTitleData,
-      LastSave: firebase.firestore.FieldValue.serverTimestamp(),
-      Description: loadedDescriptionData,
-      Category: loadedCategory,
-      ImgURL: loadedImgURL,
-    });
+  async function runSendData() {
+    if (
+      window.confirm(
+        `
+        Are you sure you want to save:
+        \n
+        ${loadedCategory}
+        ${loadedTitleData}
+        `
+      )
+    ) {
+      firebase
+        .firestore()
+        .collection("Menu")
+        .doc(String(loadedTitleData))
+        .set({
+          Price: loadedPriceData,
+          Available: loadedPublic,
+          Title: loadedTitleData,
+          LastSave: firebase.firestore.FieldValue.serverTimestamp(),
+          Description: loadedDescriptionData,
+          Category: loadedCategory,
+          ImgURL: loadedImgURL,
+        })
+        .then(() => {
+          setloadedEzID(toInteger(dataArrayState.length) + 1);
+          setloadStage("1");
+          loadStageRef.current = 1;
+          isInitialMount.current = true;
+        });
+      console.log("Thing was saved to the database.");
+    } else {
+      // Do nothing!
+      console.log("Thing was not saved to the database.");
+    }
   }
 
   function runDeleteData() {
@@ -391,20 +415,20 @@ function EditMenuComponent() {
               <div id="CategorizedItemListDiv" hidden>
                 <br />
                 Click To Navigate To: <br />
-                {dataArrayState.map((elMap) => {
+                {dataArrayState.map((elMap, index) => {
                   if (selectedCategory === elMap.Category)
                     return (
-                      <div key={elMap.ID + "_DivKey1"}>
+                      <div key={index + "_DivKey1"}>
                         <button
                           onClick={() => {
-                            setloadedEzID(elMap.ID + 1);
+                            setloadedEzID(index + 1);
                             handleClose();
                             setloadStage("1");
                             loadStageRef.current = 1;
                             isInitialMount.current = true;
                           }}
                         >
-                          <b>{elMap.Title}</b> {elMap.ID}
+                          <b>{elMap.Title}</b> {index}
                         </button>
                       </div>
                     );
@@ -413,7 +437,7 @@ function EditMenuComponent() {
               </div>
               {categoryList.map((elMap, index) => {
                 return (
-                  <div key={elMap.ID + "_DivKey2"}>
+                  <div key={elMap.title + "_DivKey2"}>
                     <button
                       onClick={() => {
                         setSelectedCategory(elMap);
@@ -439,9 +463,7 @@ function EditMenuComponent() {
             <Button
               color="primary"
               onClick={() =>
-                setcategoryVar("MenuItems") &
-                setloadStage("1") &
-                setloadedEzID("1")
+                setcategoryVar("Menu") & setloadStage("1") & setloadedEzID("1")
               }
             >
               Search
@@ -493,9 +515,6 @@ function EditMenuComponent() {
             color="success"
             onClick={() => {
               runSendData();
-              setloadStage("1");
-              loadStageRef.current = 1;
-              isInitialMount.current = true;
             }}
           >
             Save
@@ -510,9 +529,9 @@ function EditMenuComponent() {
               seteditedDescription("") &
               setloadedDescription("") &
               setstatusVar(
-                "Creating New " +
+                "Creating " +
                   categoryVar +
-                  " " +
+                  " Entry #" +
                   parseInt(dataArrayState.length + 1) +
                   " of: " +
                   dataArrayState.length
@@ -543,33 +562,42 @@ function EditMenuComponent() {
             }}
           >
             <Row>
-              <Col style={{ width: "100%" }}>
-                <b>Title</b>:<br />
+              <Col>
+                <b>
+                  Category:
+                  <br />
+                </b>
                 <TextareaAutosize
-                  value={String(loadedTitleData)}
-                  onChange={(e) => {
-                    setloadedTitleData(e.target.value);
-                  }}
+                  type="textarea"
                   aria-label="minimum height"
                   rowsMin={1}
                   placeholder=""
-                />
-              </Col>
-              <Col>
-                <b>Data ID</b>:<br />
-                <input
                   style={{
-                    display: "inline",
-                    width: "100px",
+                    width: "100%",
+                    maxWidth: "300px",
+                    minWidth: "175px",
+                    textAlign: "center",
                   }}
-                  placeholder={loadedEzID}
-                  value={String(loadedIDData)}
+                  value={String(loadedCategory)}
                   onChange={(e) => {
-                    setloadedIDData(e.target.value);
+                    setloadedCategory(e.target.value);
                   }}
-                ></input>
+                ></TextareaAutosize>
               </Col>
             </Row>
+            <Col style={{ width: "100%" }}>
+              <b>Title</b>:<br />
+              <TextareaAutosize
+                style={{ width: "80%", textAlign: "center" }}
+                value={String(loadedTitleData)}
+                onChange={(e) => {
+                  setloadedTitleData(e.target.value);
+                }}
+                aria-label="minimum height"
+                rowsMin={1}
+                placeholder=""
+              />
+            </Col>
             <Row>
               <Col>
                 <b>Price</b>:<br />
@@ -609,29 +637,7 @@ function EditMenuComponent() {
                 &nbsp;&nbsp;
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <b>
-                  Category:
-                  <br />
-                </b>
-                <TextareaAutosize
-                  type="textarea"
-                  aria-label="minimum height"
-                  rowsMin={1}
-                  placeholder=""
-                  style={{
-                    width: "100%",
-                    maxWidth: "300px",
-                    minWidth: "175px",
-                  }}
-                  value={String(loadedCategory)}
-                  onChange={(e) => {
-                    setloadedCategory(e.target.value);
-                  }}
-                ></TextareaAutosize>
-              </Col>
-            </Row>
+
             <Row>
               <Col>
                 <b>
@@ -741,7 +747,7 @@ function EditMenuComponent() {
                     onClick={() => {
                       firebase
                         .firestore()
-                        .collection("MenuItems")
+                        .collection("Menu")
                         .doc(String(loadedEzID))
                         .set({
                           Price: loadedPriceData,
