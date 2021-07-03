@@ -131,7 +131,7 @@ export default class PrivacyPolicy extends Component {
                       <p>
                         <strong>Company</strong> (referred to as either
                         &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot;
-                        or &quot;Our&quot; in this Agreement) refers to a`a Roots,
+                        or &quot;Our&quot; in this Agreement) refers to A`A Roots,
                         15 HALE MAKAI PL.
                       </p>
                     </li>
@@ -197,11 +197,11 @@ export default class PrivacyPolicy extends Component {
                     </li>
                     <li>
                       <p>
-                        <strong>Website</strong> refers to a`a Roots, accessible
+                        <strong>Website</strong> refers to A`A Roots, accessible
                         from{" "}
                         <a
                           href="https://a-a-roots.web.app/"
-                          rel="external nofollow noopener"
+                          rel="noreferrer"
                           target="_blank"
                         >
                           https://a-a-roots.web.app/
@@ -327,7 +327,7 @@ export default class PrivacyPolicy extends Component {
                       objects?&quot; available at{" "}
                       <a
                         href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-                        rel="external nofollow noopener"
+                        rel="noreferrer"
                         target="_blank"
                       >
                         https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_
@@ -354,6 +354,7 @@ export default class PrivacyPolicy extends Component {
                     <a
                       href="https://www.freeprivacypolicy.com/blog/cookies/"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       Cookies: What Do They Do?
                     </a>
@@ -670,7 +671,7 @@ export default class PrivacyPolicy extends Component {
                         By visiting this page on our website:{" "}
                         <a
                           href="https://a-a-roots.web.app/dashboards/contact"
-                          rel="external nofollow noopener"
+                          rel="noreferrer"
                           target="_blank"
                         >
                           https://a-a-roots.web.app/dashboards/contact

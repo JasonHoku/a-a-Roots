@@ -94,7 +94,7 @@ export default class LoginPageElements extends Component {
       alert("Password must be 6+ character");
     }
     try {
-     
+
       axios({
         url: `${backendUrl}/auth/local/register`,
         method: "post",
@@ -134,7 +134,7 @@ export default class LoginPageElements extends Component {
       alert("3");
     }
   }
-  
+
   render() {
     let { formName, formEmail, formMessage } = this.state;
     const { data } = this.state;
@@ -167,7 +167,7 @@ export default class LoginPageElements extends Component {
                 }}
               >
                 <h5>
-                  Register with a`a Roots to: <br /> <br />
+                  Register with A`A Roots to: <br /> <br />
                   <li>Add &amp; Manage Listings</li>
                   <li>Signup for the newsletter</li>
                   <li>Receive update notifications</li>

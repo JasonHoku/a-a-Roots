@@ -1,8 +1,7 @@
-import React, { Fragment, lazy, Suspense, useState } from "react";
+import React, { Fragment, lazy } from "react";
 import { connect } from "react-redux";
 import cx from "classnames";
 import { withRouter, Switch, Route, Redirect } from "react-router-dom";
-import Loader from "react-loaders";
 
 import { ToastContainer } from "react-toastify";
 
@@ -19,8 +18,6 @@ import "firebase/performance";
 
 import firebase from "firebase/app";
 
-import Privacy from "../../Pages/Dashboards/PrivacyPolicy/";
-import Terms from "../../Pages/Dashboards/TermsOfService/";
 // Layout
 
 import AppHeader from "../../Layout/AppHeader/";
@@ -29,24 +26,13 @@ import AppSidebar from "../../Layout/AppSidebar/";
 // Theme Options
 import ThemeOptions from "../../Layout/ThemeOptions/";
 
-import {
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-} from "react-share";
+const Terms = lazy(() =>
+  retry(() => import("../../Pages/Dashboards/TermsOfService/"))
+);
+
+const Privacy = lazy(() =>
+  retry(() => import("../../Pages/Dashboards/PrivacyPolicy/"))
+);
 
 const HomeDashboard = lazy(() =>
   retry(() => import("../../Pages/Dashboards/Home/"))
@@ -85,9 +71,6 @@ function retry(fn, retriesLeft = 5, interval = 1000) {
   });
 }
 
-let shareUrl = "https://a-a-roots.web.app/";
-let title = "Feed Yourself Healthy With A'a Roots.";
-
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -100,12 +83,12 @@ class Main extends React.Component {
   componentDidMount() {
     window.addEventListener("popstate", () => {
       window.dispatchEvent(new Event("locationchange"));
-    });
+    },  {passive: true});
     const defaultAnalytics = firebase.analytics();
     firebase.performance();
     this.toggle1();
 
-    window.addEventListener("locationchange", this.toggle1, false);
+    window.addEventListener("locationchange", this.toggle1, false,   {passive: true});
 
     document.body.addEventListener("click", async function (e) {
       const cityRef = firebase
@@ -117,17 +100,27 @@ class Main extends React.Component {
         await firebase.firestore().runTransaction(async (t) => {
           const doc = await t.get(cityRef);
 
+          let cleansedString = String(e.target.innerHTML).replace(
+            /[^a-zA-Z ]/g,
+            ""
+          );
+
           const newPopulation = doc.data().population + 1;
-          t.update(cityRef, { population: newPopulation });
+          const newPopulation2 = doc.data()[cleansedString] + 1;
+
+          t.update(cityRef, {
+            population: newPopulation,
+            [cleansedString]: newPopulation2 || 1,
+          });
         });
       } catch (e) {
         console.log("Transaction failure:", e);
       }
-    });
+    },  {passive: true});
   }
 
   componentWillUnmount() {
-    document.removeEventListener("popstate", this.toggle1.bind(this), false);
+    document.removeEventListener("popstate", this.toggle1.bind(this), false,  {passive: true});
   }
 
   async toggle1() {
@@ -169,7 +162,7 @@ class Main extends React.Component {
         if (concData.version) {
           if (!localStorage.getItem("appVersion")) {
             localStorage.setItem("appVersion", concData.version);
-          } else if (localStorage.getItem("appVersion") != concData.version) {
+          } else if (localStorage.getItem("appVersion") !== concData.version) {
             function iOS() {
               return (
                 [
@@ -245,120 +238,11 @@ class Main extends React.Component {
                       <Route path={`/menu`} component={Menu} />
                       <Route path={`/account`} component={AccountPage} />
                       <Route path={`/contact`} component={Contact} />
-                      <Route path={`/about`} component={Writing} />
                       <Route path={`/privacy`} component={Privacy} />
+                      <Route path={`/about`} component={Writing} />
                       <Route path={`/termsofservice`} component={Terms} />
                     </Switch>
                     <br />
-
-                    <div id="footer">
-                      <span
-                        style={{
-                          width: "100%",
-                          textAlign: "center",
-                          float: "center",
-                          position: "relative",
-                          bottom: "0",
-                        }}
-                      >
-                        <div
-                          className="FooterText"
-                          style={{
-                            width: "100%",
-                            textAlign: "center",
-                            float: "center",
-                            position: "relative",
-                            bottom: "-10px",
-                          }}
-                        >
-                          &nbsp;
-                          <b>a'a Roots : Maui's Best Vegan Experience</b>
-                          <br />
-                          <span className="Demo__some-network">
-                            <FacebookShareButton
-                              url={shareUrl}
-                              quote={title}
-                              className="Demo__some-network__share-button"
-                            >
-                              <FacebookIcon size={32} round />
-                            </FacebookShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <TwitterShareButton
-                              url={shareUrl}
-                              title={title}
-                              className="Demo__some-network__share-button"
-                            >
-                              <TwitterIcon size={32} round />
-                            </TwitterShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <TelegramShareButton
-                              url={shareUrl}
-                              title={title}
-                              className="Demo__some-network__share-button"
-                            >
-                              <TelegramIcon size={32} round />
-                            </TelegramShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <WhatsappShareButton
-                              url={shareUrl}
-                              title={title}
-                              separator=":: "
-                              className="Demo__some-network__share-button"
-                            >
-                              <WhatsappIcon size={32} round />
-                            </WhatsappShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <LinkedinShareButton
-                              url={shareUrl}
-                              className="Demo__some-network__share-button"
-                            >
-                              <LinkedinIcon size={32} round />
-                            </LinkedinShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <RedditShareButton
-                              url={shareUrl}
-                              title={title}
-                              windowWidth={660}
-                              windowHeight={460}
-                              className="Demo__some-network__share-button"
-                            >
-                              <RedditIcon size={32} round />
-                            </RedditShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <TumblrShareButton
-                              url={shareUrl}
-                              title={title}
-                              className="Demo__some-network__share-button"
-                            >
-                              <TumblrIcon size={32} round />
-                            </TumblrShareButton>
-                          </span>
-                          &nbsp;
-                          <span className="Demo__some-network">
-                            <EmailShareButton
-                              url={shareUrl}
-                              subject={title}
-                              body="body"
-                              className="Demo__some-network__share-button"
-                            >
-                              <EmailIcon size={32} round />
-                            </EmailShareButton>
-                          </span>
-                        </div>
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>

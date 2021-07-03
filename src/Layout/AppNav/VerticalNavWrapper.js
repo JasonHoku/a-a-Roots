@@ -254,10 +254,13 @@ export default function Nav() {
             display: "flex",
             verticalAlign: "middle",
             alignItems: "center",
+            textAlign: "center",
           }}
         >
           <img
-            alt="a`a roots logo"
+            width="200px"
+            height="100%"
+            alt="A`A Roots logo"
             src="/logoHorizontal.webp"
             style={{
               width: "100%",

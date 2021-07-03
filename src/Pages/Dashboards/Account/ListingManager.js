@@ -631,6 +631,7 @@ function ListingManagerComponent() {
                 <br />
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   href={`https://www.google.com/search?q=${encodeURIComponent(
                     loadedLocationData
                   )}`}

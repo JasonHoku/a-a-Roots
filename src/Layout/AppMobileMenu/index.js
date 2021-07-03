@@ -45,11 +45,10 @@ class AppMobileMenu extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener("hashchange", this.hashChangeEvent, true);
     document.addEventListener(
       "click",
       this.handleClickOutside.bind(this),
-      true
+      true,  {passive: true}
     );
   }
   componentWillUnmount() {

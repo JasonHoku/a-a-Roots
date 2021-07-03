@@ -44,20 +44,18 @@ import Typography from "@material-ui/core/Typography";
 function EditMenuComponent() {
   const [categoryList, setCategoryList] = useState([]);
 
-  const [url, setURL] = useState("");
 
   const [textVar, settextVar] = useState("Select an Instance To Begin");
 
   const [statusVar, setstatusVar] = useState("ID# 1 / 1");
+  const [url, setURL] = useState("");
 
   const [loadedImgURL, setloadedImgURL] = useState("");
   const [loadedDescription, setloadedDescription] = useState("");
   const [editedDescription, seteditedDescription] = useState("");
   const [loadedDescriptionData, setloadedDescriptionData] = useState("");
   const [getDataEZID, setgetDataEZID] = useState("");
-  const [ChangeImageURLVar, setChangeImageURLVar] = useState("");
   const [loadedPriceData, setloadedPriceData] = useState("");
-  const [loadedGMapCoords, setloadedGMapCoords] = useState("");
   const [loadedLastSave, setloadedLastSave] = useState("");
   const [loadedCategory, setloadedCategory] = useState("");
   const [loadedPublic, setloadedPublic] = useState("");

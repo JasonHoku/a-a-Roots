@@ -93,7 +93,7 @@ const Slideshow = () => {
               }}
             >
               <img
-                alt="a`a Roots Business Listings"
+                alt="A`A Roots Business Listings"
                 src="/images/Slideshow/black-sand.jpg"
                 style={{
                   width: "100%",
@@ -195,7 +195,7 @@ const Slideshow = () => {
             >
               {" "}
               <img
-                alt="a`a Roots Business Listings"
+                alt="A`A Roots Business Listings"
                 src="/images/Slideshow/haleakela.jpg"
                 style={{
                   width: "100%",

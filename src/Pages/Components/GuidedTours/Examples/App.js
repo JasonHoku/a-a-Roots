@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("keyup", this.keyHandling);
+    window.addEventListener("keyup", this.keyHandling,  {passive: true} );
   }
 
   UNSAFE_componentWillMount() {

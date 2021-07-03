@@ -261,7 +261,7 @@ function AppAuth() {
                 textAlign: "center",
               }}
             >
-              <b> An account with a`a Roots is required to:</b>
+              <b> An account with A`A Roots is required to:</b>
             </h2>
             <br />
             <Row

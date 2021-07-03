@@ -2,30 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
-import {
-  Row,
-  Col,
-  Button,
-  UncontrolledButtonDropdown,
-  DropdownToggle,
-  ListGroup,
-  ListGroupItem,
-  Card,
-  CardBody,
-  Form,
-  FormGroup,
-  Label,
-  Container,
-  Input,
-  CardHeader,
-  NavLink,
-  TabContent,
-  TabPane,
-  Progress,
-  CardFooter,
-  ButtonGroup,
-  CardLink,
-} from "reactstrap";
+import { Row, Button, Card, CardBody } from "reactstrap";
 
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -62,11 +39,20 @@ export default class CRMDashboard2 extends Component {
     setTimeout(() => {
       document.getElementById("HomeImg").style.opacity = 1;
       document.getElementById("HomeImg").hidden = false;
-    }, 600);
+    }, 100);
     setTimeout(() => {
-      document.getElementById("HomeFooter").style.opacity = 1;
-      document.getElementById("HomeFooter").hidden = false;
-    }, 900);
+      try {
+        document.getElementById("HomeFooter").style.opacity = 1;
+        document.getElementById("HomeFooter").hidden = false;
+      } catch (error) {
+        setTimeout(() => {
+          try {
+            document.getElementById("HomeFooter").style.opacity = 1;
+            document.getElementById("HomeFooter").hidden = false;
+          } catch (error) {}
+        }, 1000);
+      }
+    }, 250);
   }
 
   render() {
@@ -75,11 +61,11 @@ export default class CRMDashboard2 extends Component {
       <Fragment>
         <Helmet>
           <title>
-            A`a Roots: Specializing In Vegetarian and Vegan Cuisine.
+            A`A Roots: Specializing In Vegetarian and Vegan Cuisine.
           </title>
           <meta
             name="description"
-            content="A`a Roots revolves around being health-conscious and eco-friendly. We thrive to prepare fresh, locally sourced, vegan dishes, along with freshly pressed juices and smoothies that are infused with superfoods."
+            content="A`A Roots revolves around being health-conscious and eco-friendly. We thrive to prepare fresh, locally sourced, vegan dishes, along with freshly pressed juices and smoothies that are infused with superfoods."
           />
           <link rel="canonical" href="https://a-a-roots.web.app/home" />
         </Helmet>
@@ -87,8 +73,9 @@ export default class CRMDashboard2 extends Component {
           component="div"
           transitionName="TabsAnimation"
           transitionAppear={true}
-          transitionAppearTimeout={0}
-          transitionEnter={false}
+          transitionAppearTimeout={1100}
+          transitionEnter={true}
+          transitionEnterTimeout={1000}
           transitionLeave={false}
         >
           <div
@@ -121,6 +108,7 @@ export default class CRMDashboard2 extends Component {
               </h1>
               <h2 style={{ color: "white", textAlign: "center" }}>
                 Specializing In Vegan Cuisine
+                <br />
                 <br />
                 <br />
                 <Link to="/menu">
@@ -162,7 +150,7 @@ export default class CRMDashboard2 extends Component {
                 </h2>
                 <br />
                 <h3>
-                  A`a Roots revolves around being health-conscious and
+                  A`A Roots revolves around being health-conscious and
                   eco-friendly. We thrive to prepare fresh, locally sourced,
                   vegan dishes, along with freshly pressed juices and smoothies
                   that are infused with superfoods.
@@ -195,6 +183,7 @@ export default class CRMDashboard2 extends Component {
                         <a
                           href="https://www.instagram.com/aarootsmaui/"
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <strong>@aarootsmaui</strong>
                         </a>

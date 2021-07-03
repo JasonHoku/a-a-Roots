@@ -67,10 +67,10 @@ export default class WritingElements extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>A`a Roots About</title>
+          <title>A`A Roots About</title>
           <meta
             name="description"
-            content="Learn about A`a Roots at this informative webpage."
+            content="Learn about A`A Roots at this informative webpage."
           />
           <link rel="canonical" href="https://a-a-roots.web.app/about" />
         </Helmet>

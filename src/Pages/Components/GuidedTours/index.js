@@ -23,11 +23,11 @@ class GuidedToursExample extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    window.addEventListener("keyup", this.keyHandling);
+    window.addEventListener("keyup", this.keyHandling,  {passive: true});
   }
 
   componentDidMount() {
-    window.removeEventListener("keyup", this.keyHandling);
+    window.removeEventListener("keyup", this.keyHandling ,  {passive: true});
   }
 
   keyHandling = (e) => {

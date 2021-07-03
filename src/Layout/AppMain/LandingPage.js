@@ -73,7 +73,7 @@ class LandingPage extends React.Component {
                 id="fadeIn"
                 className="landingContent fadeIn "
               >
-                <br /> <h3 style={{ fontSize: "46px" }}>a`a Roots</h3> <br />
+                <br /> <h3 style={{ fontSize: "46px" }}>A`A Roots</h3> <br />
                 <span style={{ width: "200px", height: "200px" }}>
                   <img
                     className="spin landingMaui"
@@ -98,7 +98,7 @@ class LandingPage extends React.Component {
                   Hawaii's Resource For Everything Sustainable
                 </h2>
                 <h3 style={{ margin: "25px", textAlign: "center" }}>
-                  &nbsp;&nbsp;Join a`a Roots in plotting Hawaii's ecosystem into
+                  &nbsp;&nbsp;Join A`A Roots in plotting Hawaii's ecosystem into
                   intuitive and powerful technologies. <br />
                 </h3>
                 <br />

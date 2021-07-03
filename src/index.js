@@ -6,7 +6,7 @@ import "core-js";
 
 import "core-js/features/set";
 
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 
 import Loader from "react-loaders";
 
@@ -27,8 +27,9 @@ import CheckVersions from "./Pages/Main/checkVersions";
 
 import "firebaseui/dist/firebaseui.css";
 
-import "./Pages/Dashboards/Home/Examples/backgroundeffect";
+import BGEffect from "./Pages/Dashboards/Home/Examples/backgroundeffect";
 import firebase from "firebase/app";
+
 
 const store = configureStore();
 const rootElement = document.getElementById("root");
@@ -38,20 +39,21 @@ window.addEventListener("error", (e) => {
   console.log(e);
   console.log(e.message);
   if (window.location.hostname !== "localhost") {
-
-  firebase
-    .firestore()
-    .collection("ErrorLogs")
-    .doc()
-    .set({ errorMessage: e.message })
-    .then(() => {
-      alert(
-        "An error has been detected and is being reported to administration. "
-      );
-    });
+    firebase
+      .firestore()
+      .collection("ErrorLogs")
+      .doc()
+      .set({
+        errorMessage: e.message,
+        time: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        alert(
+          "An error has been detected and is being reported to administration. "
+        );
+      });
   }
-
-});
+}, {passive: true});
 
 ReactDOM.render(
   <Suspense
@@ -69,7 +71,7 @@ ReactDOM.render(
           type="ball-zig-zag-deflect"
         />
         <div className="text-center" style={{ color: "white" }}>
-          <h2>Loading a`a Roots </h2>
+          <h2>Loading A`A Roots </h2>
         </div>
       </div>
     }
@@ -78,6 +80,7 @@ ReactDOM.render(
       <Router>
         <Main />
         <CheckVersions />
+        <BGEffect />
       </Router>
     </Provider>{" "}
   </Suspense>,

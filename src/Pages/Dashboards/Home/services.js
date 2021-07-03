@@ -11,21 +11,21 @@ import ScrollableInkTabBar from "rc-tabs/lib/ScrollableInkTabBar";
 import CRMDashboard2 from "./Examples/Variation2";
 
 
-//  
+//
 
 export default class HomeDashboard extends Component {
   render() {
-    return ( 
+    return (
       <Fragment>
         <CSSTransitionGroup component="div" transitionName="TabsAnimation" transitionAppear={true}
           transitionAppearTimeout={0} transitionEnter={false} transitionLeave={false}>
 
-           <PageTitleAlt2 heading="a`a Roots Design, Engineering &amp; Services | Website Application Development, Music, Graphic Arts, Apparel, Discussion &amp; Modern Arts Collective Non-Profit of West Maui, Hawaii"
-            subheading="a`a Roots Design, Engineering &amp; Services | Website Application Development, Music, Graphic Arts, Apparel, Discussion &amp; Modern Arts Collective Non-Profit of West Maui, Hawaii"/>
+           <PageTitleAlt2 heading="A`A Roots Design, Engineering &amp; Services | Website Application Development, Music, Graphic Arts, Apparel, Discussion &amp; Modern Arts Collective Non-Profit of West Maui, Hawaii"
+            subheading="A`A Roots Design, Engineering &amp; Services | Website Application Development, Music, Graphic Arts, Apparel, Discussion &amp; Modern Arts Collective Non-Profit of West Maui, Hawaii"/>
             <CRMDashboard2 />
                  </CSSTransitionGroup>
       </Fragment>
     )
-    
+
   }
 }

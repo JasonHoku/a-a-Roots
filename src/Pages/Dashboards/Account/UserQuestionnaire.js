@@ -401,7 +401,7 @@ function UserQuestionnaireComponent() {
 
   useEffect(() => {
     // initiate the event handler
-    window.addEventListener("mousedown", onClickEvent);
+    window.addEventListener("mousedown", onClickEvent,  {passive: true});
 
     // this will clean up the event every time the component is re-rendered
     return function cleanup() {

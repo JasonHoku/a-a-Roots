@@ -47,15 +47,11 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener("hashchange", this.updateState, false);
-    this.setState({
-      url: window.location.path,
-    });
-    document.addEventListener("click", this.onClickGA.bind(this), false);
+    document.addEventListener("click", this.onClickGA.bind(this), false,  {passive: true});
     document.addEventListener(
       "click",
       this.closePopupOnClick.bind(this),
-      false
+      false , {passive: true}
     );
     ReactGA.initialize("UA-102481694-5");
   }
@@ -130,9 +126,9 @@ class Header extends React.Component {
           })}
           transitionName="HeaderAnimation"
           transitionAppear={true}
-          transitionAppearTimeout={700}
+          transitionAppearTimeout={300}
           transitionEnter={true}
-          transitionEnterTimeout={700}
+          transitionEnterTimeout={300}
           transitionLeave={false}
         >
           <HeaderLogo />

@@ -123,7 +123,7 @@ function ModeratorElements() {
         if (result === "granted") {
           navigator.serviceWorker.ready.then(function (registration) {
             var options = {
-              body: "A new user has joined a`a Roots",
+              body: "A new user has joined A`A Roots",
               icon: "logo.png",
               vibrate: [100, 50, 100],
               data: {
@@ -139,7 +139,7 @@ function ModeratorElements() {
   }
 
   function showNotification2(e) {
-    toast("A new user has joined a`a Roots", {
+    toast("A new user has joined A`A Roots", {
       position: "top-right",
       autoClose: false,
       containerId: 1,

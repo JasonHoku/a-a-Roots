@@ -26,7 +26,6 @@ class MegaMenu extends React.Component {
     });
   }
   componentDidMount() {
-    window.addEventListener("popstate", this.updateState, false);
   }
   render() {
     return (

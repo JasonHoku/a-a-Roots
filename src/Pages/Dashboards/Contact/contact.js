@@ -43,11 +43,6 @@ var EJSUSER = process.env.REACT_APP_EJSUSER;
 
 var CLIIP;
 
-const CLIENT = {
-  sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
-  production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
-};
-
 export default class ContactElements extends Component {
   constructor(props) {
     super(props);
@@ -99,27 +94,29 @@ export default class ContactElements extends Component {
       });
     }
 
-    this.state.infoCLI = JSON.stringify({
-      timeOpened: new Date(),
-      timezone: new Date().getTimezoneOffset() / 60,
-      pageon: window.location.pathname,
-      referrer: document.referrer,
-      previousSites: window.history.length,
-      browserName: window.navigator.appName,
-      browserEngine: window.navigator.product,
-      browserVersion1a: window.navigator.appVersion,
-      browserVersion1b: navigator.userAgent,
-      browserLanguage: navigator.language,
-      browserOnline: navigator.onLine,
-      browserPlatform: navigator.platform,
-      sizeScreenW: window.screen.width,
-      sizeScreenH: window.screen.height,
-      sizeInW: window.innerWidth,
-      sizeInH: window.innerHeight,
-      sizeAvailW: window.screen.availWidth,
-      sizeAvailH: window.screen.availHeight,
-      latitude,
-      longitude,
+    this.setState({
+      infoCLI: {
+        timeOpened: new Date(),
+        timezone: new Date().getTimezoneOffset() / 60,
+        pageon: window.location.pathname,
+        referrer: document.referrer,
+        previousSites: window.history.length,
+        browserName: window.navigator.appName,
+        browserEngine: window.navigator.product,
+        browserVersion1a: window.navigator.appVersion,
+        browserVersion1b: navigator.userAgent,
+        browserLanguage: navigator.language,
+        browserOnline: navigator.onLine,
+        browserPlatform: navigator.platform,
+        sizeScreenW: window.screen.width,
+        sizeScreenH: window.screen.height,
+        sizeInW: window.innerWidth,
+        sizeInH: window.innerHeight,
+        sizeAvailW: window.screen.availWidth,
+        sizeAvailH: window.screen.availHeight,
+        latitude,
+        longitude,
+      },
     });
     this.setState({ isLoading: true });
 
@@ -148,7 +145,7 @@ export default class ContactElements extends Component {
         message2: `ClientInfo: ${CLIIP} :: ${this.state.infoCLI}`,
       };
 
-      emailjs.send(EJSSERVICE, EJSTEMPLATE, templateParams).then(
+      emailjs.send(EJSSERVICE, EJSTEMPLATE, templateParams, EJSUSER).then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
           alert("Your message has sent successfully!");
@@ -170,10 +167,10 @@ export default class ContactElements extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>A`a Roots Contact</title>
+          <title>A`A Roots Contact</title>
           <meta
             name="description"
-            content="Easily reach the A`a Roots team through this web page."
+            content="Easily reach the A`A Roots team through this web page."
           />
           <link rel="canonical" href="https://a-a-roots.web.app/contact" />
         </Helmet>
@@ -199,7 +196,7 @@ export default class ContactElements extends Component {
                 boxShadow: "0px 0px 0px 5px rgba(50,50,50, .8)",
               }}
             >
-              <CardHeader>Contact a`a Roots</CardHeader>
+              <CardHeader>Contact A`A Roots</CardHeader>
               <CardBody
                 style={{
                   height: "100%",
@@ -220,6 +217,7 @@ export default class ContactElements extends Component {
                       <a
                         href="https://www.instagram.com/aarootsmaui/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <strong>@aarootsmaui</strong>
                       </a>

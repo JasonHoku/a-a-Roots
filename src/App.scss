@@ -375,8 +375,24 @@ div.app-footer {
   }
 }
 @media screen and (min-width: 1266px) {
+  #HomeImg > span > h1 {
+    position: relative;
+    text-align: right;
+    transform: translateX(525px);
+    width: 50%;
+  }
+  #HomeImg > span > h2 > a > button {
+    position: relative;
+    transform: translateX(100px);
+  }
+  #HomeImg > span > h2 {
+    position: relative;
+    transform: translateX(525px);
+    width: 50%;
+  }
   .homePageHeader {
     position: relative;
+    width: 50%;
   }
   .FooterText {
     position: relative;
@@ -991,7 +1007,7 @@ button {
   }
 }
 
-#root > div > div.app-header.header-shadow > button {
+#root > div > div.app-header.header-shadow > span > button {
   text-decoration: none;
   background-color: transparent;
 }

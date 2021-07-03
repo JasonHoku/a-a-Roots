@@ -518,13 +518,15 @@ export default function CRMDashboard2() {
                 </Col>
               );
             }
-          }
-      });
+            return false
+          } else {return false}
+          });
+          return false
     });
-    console.log("Finished Rendering");
-    console.log(categorizedMenuArray);
-    console.log(loadStageRef.current);
-    console.log(categorizedMenuArray);
+    // console.log("Finished Rendering");
+    // console.log(categorizedMenuArray);
+    // console.log(loadStageRef.current);
+    // console.log(categorizedMenuArray);
     if (loadStageRef.current === 1) {
       return categorizedMenuArray.reverse();
     } else {
@@ -544,16 +546,17 @@ export default function CRMDashboard2() {
     reverse = !reverse ? 1 : -1;
 
     return function (a, b) {
+      // eslint-disable-next-line no-sequences
       return (a = key(a)), (b = key(b)), reverse * ((a > b) - (b > a));
     };
   };
   return (
     <Fragment>
       <Helmet>
-        <title>a`a Roots Menu</title>
+        <title>A`A Roots Menu</title>
         <meta
           name="description"
-          content="Browse Through Smoothies, Burritos, Bowls, Wraps & More. @ The A`a Roots Menu."
+          content="Browse Through Smoothies, Burritos, Bowls, Wraps & More. @ The A`A Roots Menu."
         />
         <link rel="canonical" href="https://a-a-roots.web.app/menu" />
       </Helmet>
@@ -590,7 +593,7 @@ export default function CRMDashboard2() {
               }}
             >
               <CardHeader>
-                <h1>a`a Roots: Menu</h1>
+                <h1>A`A Roots: Menu</h1>
               </CardHeader>
               <br />
               <CardBody
@@ -612,6 +615,7 @@ export default function CRMDashboard2() {
                         <a
                           href="https://www.instagram.com/aarootsmaui/"
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <strong>@aarootsmaui</strong>
                         </a>
@@ -685,8 +689,29 @@ export default function CRMDashboard2() {
                 <Row>{decideRenderMenu()}</Row>
               </CardBody>{" "}
               <CardBody>
-                <Row>
+                <Row
+                  style={{
+                    borderRadius: "25px",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  <div
+                    hidden={categoryList.length > 1}
+                    style={{
+                      height: "350px",
+                      borderRadius: "25px",
+                      boxShadow: "0px 0px 0px 2px #ccdddd",
+                      width: "100%",
+                      textAlign: "center",
+                    }}
+                  >
+                    <h3 style={{ width: "100%", textAlign: "center" }}>
+                      Querying The Live A`A Roots Menu
+                    </h3>
+                  </div>
                   <Col
+                    hidden={categoryList.length <= 1}
                     style={{
                       textAlign: "center",
                       position: "relative",
@@ -783,7 +808,6 @@ export default function CRMDashboard2() {
                     </b>
                     <TextareaAutosize
                       type="textarea"
-                      aria-label="minimum height"
                       rowsMin={1}
                       placeholder=""
                       style={{
@@ -812,7 +836,6 @@ export default function CRMDashboard2() {
                     onChange={(e) => {
                       setloadedTitleData(e.target.value);
                     }}
-                    aria-label="minimum height"
                     rowsMin={1}
                     placeholder=""
                   />
@@ -855,7 +878,6 @@ export default function CRMDashboard2() {
                 </Row>
                 <br />
                 <form
-                  role="imgForm"
                   name="imgForm"
                   id="imgForm"
                   onSubmit={handleUpload}

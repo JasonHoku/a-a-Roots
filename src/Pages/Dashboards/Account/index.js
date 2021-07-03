@@ -128,10 +128,10 @@ function AccountPage() {
   return (
     <Fragment>
       <Helmet>
-        <title>Aa`a Roots Account Management</title>
+        <title>A`A Roots Account Management</title>
         <meta
           name="description"
-          content="Access A`a Roots account tools at this webpage."
+          content="Access A`A Roots account tools at this webpage."
         />
         <link rel="canonical" href="https://a-a-roots.web.app/account" />
       </Helmet>

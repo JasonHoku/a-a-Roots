@@ -36,7 +36,7 @@ class HeaderLogo extends React.Component {
     setTimeout(() => {
       document.getElementById("headerLogoID").hidden = false;
       document.getElementById("headerLogoID").style.opacity = 1;
-    }, 1000);
+    }, 750);
     document.addEventListener(
       "click",
       this.handleClickOutside.bind(this),
@@ -72,7 +72,7 @@ class HeaderLogo extends React.Component {
             style={{
               opacity: 0,
               transitionDuration: "1s",
-              transition: "opacity 2s",
+              transition: "opacity 1s",
             }}
             id="headerLogoID"
             aria-label="Landing Page Link"
@@ -88,8 +88,10 @@ class HeaderLogo extends React.Component {
               className="logo-src"
             >
               <img
+                width="200px"
+                height="100px"
+                alt="A A Roots in Napili, Maui"
                 style={{
-                  width: "80%",
                   zIndex: 999,
                   border: "0px",
                   position: "relative",
@@ -102,7 +104,10 @@ class HeaderLogo extends React.Component {
           <div className="header__pane ml-auto"></div>
         </div>
         <span style={{ position: "absolute", top: "15px" }}>
-          <Slider
+          <Slider id="SidebarButton"
+          aria-label="SidebarButton"
+            role="button"
+            aria-pressed="false"
             style={{ position: "absolute", top: "-25px" }}
             width={65}
             lineHeight={5}
