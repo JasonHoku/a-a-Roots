@@ -28,7 +28,7 @@ import axios from "axios";
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "https://api.a-a-roots.web.app/graphql",
+    uri: "https://api.aarootshi.com/graphql",
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -55,7 +55,7 @@ class NoteManagerComponent extends Component {
     console.log("Check Survey Data");
     try {
       this.state.authVar = axios
-        .get(`https://api.a-a-roots.web.app/surveys`, {
+        .get(`https://api.aarootshi.com/surveys`, {
           headers: {
             "content-type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -111,7 +111,7 @@ class NoteManagerComponent extends Component {
     formData.Answers = this.state.noteVar;
 
     axios
-      .post(`https://api.a-a-roots.web.app/surveys`, JSON.stringify(formData), {
+      .post(`https://api.aarootshi.com/surveys`, JSON.stringify(formData), {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -134,7 +134,7 @@ class NoteManagerComponent extends Component {
     console.log(formData);
 
     axios
-      .post(`https://api.a-a-roots.web.app/surveys`, JSON.stringify(formData), {
+      .post(`https://api.aarootshi.com/surveys`, JSON.stringify(formData), {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,

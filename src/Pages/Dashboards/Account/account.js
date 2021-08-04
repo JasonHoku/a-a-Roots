@@ -50,7 +50,7 @@ function AccountElements() {
   const [formName, setformName] = useState("");
   const [formCategory, setformCategory] = useState("");
   const [QRCodeState, setQRCodeState] = useState(
-    `http://a-a-roots.web.app/${String(new Date())}`
+    `http://aarootshi.com/${String(new Date())}`
   );
   const [formLoc, setformLoc] = useState("");
   const [finListButtonDisable, setfinListButtonDisable] = useState(true);
@@ -385,7 +385,7 @@ function AccountElements() {
                   style={{ width: "100%", height: "100%" }}
                   onClick={() => {
                     setQRCodeState(
-                      `http://a-a-roots.web.app/${String(new Date())}`
+                      `http://aarootshi.com/${String(new Date())}`
                     );
                   }}
                   value={QRCodeState}

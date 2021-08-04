@@ -29,7 +29,7 @@ import axios from "axios";
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "https://api.a-a-roots.web.app/graphql",
+    uri: "https://api.aarootshi.com/graphql",
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -56,7 +56,7 @@ class VideoManager extends Component {
     console.log("Check Chat Data");
     try {
       this.state.authVar = axios
-        .get(`https://api.a-a-roots.web.app/chats`, {
+        .get(`https://api.aarootshi.com/chats`, {
           headers: {
             "content-type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -112,7 +112,7 @@ class VideoManager extends Component {
     console.log(formData);
 
     axios
-      .post(`https://api.a-a-roots.web.app/chats`, JSON.stringify(formData), {
+      .post(`https://api.aarootshi.com/chats`, JSON.stringify(formData), {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -136,7 +136,7 @@ class VideoManager extends Component {
     console.log(formData);
 
     axios
-      .post(`https://api.a-a-roots.web.app/chats`, JSON.stringify(formData), {
+      .post(`https://api.aarootshi.com/chats`, JSON.stringify(formData), {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -209,7 +209,7 @@ class VideoManager extends Component {
       <Fragment>
         <CardHeader>Site Video Manager</CardHeader>
         <CardBody>
-          Upload Videos <br /> Get Embed URLs <br /> Use Live Stream <br /> 
+          Upload Videos <br /> Get Embed URLs <br /> Use Live Stream <br />
         </CardBody>
       </Fragment>
     );

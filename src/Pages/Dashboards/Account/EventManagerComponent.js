@@ -34,7 +34,7 @@ import "../../../assets/components/Calendar.css";
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "https://api.a-a-roots.web.app/graphql",
+    uri: "https://api.aarootshi.com/graphql",
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -72,7 +72,7 @@ class EventManagerComponent extends Component {
 
       axios
         .post(
-          `https://api.a-a-roots.web.app/events`,
+          `https://api.aarootshi.com/events`,
           JSON.stringify(formData),
           {
             headers: {

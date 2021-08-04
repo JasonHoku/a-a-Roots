@@ -72,7 +72,7 @@ export default class WritingElements extends Component {
             name="description"
             content="Learn about A`A Roots at this informative webpage."
           />
-          <link rel="canonical" href="https://a-a-roots.web.app/about" />
+          <link rel="canonical" href="https://aarootshi.com/about" />
         </Helmet>
         <CSSTransitionGroup
           component="div"

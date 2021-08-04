@@ -67,7 +67,7 @@ export default class CRMDashboard2 extends Component {
             name="description"
             content="A`A Roots revolves around being health-conscious and eco-friendly. We thrive to prepare fresh, locally sourced, vegan dishes, along with freshly pressed juices and smoothies that are infused with superfoods."
           />
-          <link rel="canonical" href="https://a-a-roots.web.app/home" />
+          <link rel="canonical" href="https://aarootshi.com/home" />
         </Helmet>
         <CSSTransitionGroup
           component="div"

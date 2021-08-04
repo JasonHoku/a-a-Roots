@@ -290,12 +290,9 @@ function AppAuth() {
                   }}
                 >
                   <br />
-                  <li>Add &amp; Manage Listings</li> <br />
-                  <li>Subscribe to Updates</li>
+                  <li>Explore Upcoming Features</li>
+                  <li>Subscribe to Website Updates</li>
                   <br />
-                  <li>Get Help Creating Your Listing</li>
-                  <br />
-                  <li>Chat Amongst the Community</li> <br />
                 </h4>
               </div>
               <br />

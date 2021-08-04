@@ -133,7 +133,7 @@ function AccountPage() {
           name="description"
           content="Access A`A Roots account tools at this webpage."
         />
-        <link rel="canonical" href="https://a-a-roots.web.app/account" />
+        <link rel="canonical" href="https://aarootshi.com/account" />
       </Helmet>
       <Card
         className="AccountBackground"

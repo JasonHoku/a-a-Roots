@@ -558,7 +558,7 @@ export default function CRMDashboard2() {
           name="description"
           content="Browse Through Smoothies, Burritos, Bowls, Wraps & More. @ The A`A Roots Menu."
         />
-        <link rel="canonical" href="https://a-a-roots.web.app/menu" />
+        <link rel="canonical" href="https://aarootshi.com/menu" />
       </Helmet>
       <CSSTransitionGroup
         component="div"

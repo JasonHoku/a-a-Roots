@@ -29,7 +29,7 @@ import axios from "axios";
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "https://api.a-a-roots.web.app/graphql",
+    uri: "https://api.aarootshi.com/graphql",
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -57,7 +57,7 @@ class IssueManager extends Component {
     console.log("Check Issue Data");
     try {
       this.state.authVar = axios
-        .get(`https://api.a-a-roots.web.app/issues`, {
+        .get(`https://api.aarootshi.com/issues`, {
           headers: {
             "content-type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -123,7 +123,7 @@ class IssueManager extends Component {
     console.log(formData);
 
     axios
-      .post(`https://api.a-a-roots.web.app/issues`, JSON.stringify(formData), {
+      .post(`https://api.aarootshi.com/issues`, JSON.stringify(formData), {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -148,7 +148,7 @@ class IssueManager extends Component {
 
     axios
       .post(
-        `https://api.a-a-roots.web.app/pono-comments`,
+        `https://api.aarootshi.com/pono-comments`,
         JSON.stringify(formData),
         {
           headers: {

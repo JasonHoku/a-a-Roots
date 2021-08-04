@@ -28,7 +28,7 @@ import axios from "axios";
 const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "https://api.a-a-roots.web.app/graphql",
+    uri: "https://api.aarootshi.com/graphql",
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -63,7 +63,7 @@ class DocumentationPage extends Component {
 
     axios
       .post(
-        `https://api.a-a-roots.web.app/live-chats`,
+        `https://api.aarootshi.com/live-chats`,
         JSON.stringify(formData),
         {
           headers: {
@@ -90,7 +90,7 @@ class DocumentationPage extends Component {
 
     axios
       .post(
-        `https://api.a-a-roots.web.app/live-chats`,
+        `https://api.aarootshi.com/live-chats`,
         JSON.stringify(formData),
         {
           headers: {

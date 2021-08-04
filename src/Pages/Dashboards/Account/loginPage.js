@@ -168,10 +168,10 @@ export default class LoginPageElements extends Component {
               >
                 <h5>
                   Register with A`A Roots to: <br /> <br />
-                  <li>Add &amp; Manage Listings</li>
-                  <li>Signup for the newsletter</li>
-                  <li>Receive update notifications</li>
-                  <li>Chat amongst the community</li>
+                  <br />
+                  <li>Explore Upcoming Features</li>
+                  <li>Subscribe to Website Updates</li>
+                  <br />
                 </h5>
               </CardBody>
               <CardBody hidden id="signUp">
@@ -220,7 +220,7 @@ export default class LoginPageElements extends Component {
                   ></Input>
                   <br />
                   <br />
-                  <a href="https://api.a-a-roots.web.app/connect/google/redirect">
+                  <a href="https://api.aarootshi.com/connect/google/redirect">
                     Or Sign-In with Google:{" "}
                     <img src="\assets\images\btn_google_dark_normal_ios.svg"></img>
                   </a>

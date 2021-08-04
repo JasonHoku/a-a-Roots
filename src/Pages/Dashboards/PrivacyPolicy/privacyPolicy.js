@@ -200,11 +200,11 @@ export default class PrivacyPolicy extends Component {
                         <strong>Website</strong> refers to A`A Roots, accessible
                         from{" "}
                         <a
-                          href="https://a-a-roots.web.app/"
+                          href="https://aarootshi.com/"
                           rel="noreferrer"
                           target="_blank"
                         >
-                          https://a-a-roots.web.app/
+                          https://aarootshi.com/
                         </a>
                       </p>
                     </li>
@@ -664,17 +664,17 @@ export default class PrivacyPolicy extends Component {
                   </p>
                   <ul>
                     <li>
-                      <p>By email: admin@a-a-roots.web.app</p>
+                      <p>By email: admin@aarootshi.com</p>
                     </li>
                     <li>
                       <p>
                         By visiting this page on our website:{" "}
                         <a
-                          href="https://a-a-roots.web.app/dashboards/contact"
+                          href="https://aarootshi.com/dashboards/contact"
                           rel="noreferrer"
                           target="_blank"
                         >
-                          https://a-a-roots.web.app/dashboards/contact
+                          https://aarootshi.com/dashboards/contact
                         </a>
                       </p>
                     </li>

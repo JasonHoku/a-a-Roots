@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow:
 
-Sitemap: https://a-a-roots.web.app/sitemap.xml
+Sitemap: https://aarootshi.com/sitemap.xml

@@ -144,7 +144,7 @@ const Slideshow = () => {
               }}
             >
               <img
-                alt="a-a-roots.web.app Maui, Lahaina Sustainable Data"
+                alt="aarootshi.com Maui, Lahaina Sustainable Data"
                 src="/images/Slideshow/bs2.jpg"
                 style={{
                   width: "100%",

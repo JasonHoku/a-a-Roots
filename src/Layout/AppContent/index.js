@@ -34,7 +34,7 @@ class AppContent extends React.Component {
 
 
 
-    
+
     var element = document.getElementById("bgimg1");
     var element2 = document.getElementById("bgimg2");
     var element3 = document.getElementById("bgimg3");
@@ -97,7 +97,7 @@ class AppContent extends React.Component {
     }, 18000);
 
     return (
-      
+
       <Fragment>
 
         <Row>
@@ -127,7 +127,7 @@ class AppContent extends React.Component {
             >
               <CardHeader> Coming Soon</CardHeader>{" "}
               <CardBody>
-                Stay tuned for updates in the coming days at a-a-roots.web.app
+                Stay tuned for updates in the coming days at aarootshi.com
               </CardBody>
             </Card>
             <Card

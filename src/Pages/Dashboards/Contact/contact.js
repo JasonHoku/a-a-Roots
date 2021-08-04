@@ -141,7 +141,7 @@ export default class ContactElements extends Component {
       this.setState({ sendButtonState: "Sending..." });
       var templateParams = {
         name: `aa Roots | Contact From: ${CLIIP}`,
-        message: `FormName: ${formName} FormEmail: ${formEmail} +  Message: ${formMessage}`,
+        message: `FormName: ${formName} FFormEmail: ${formEmail} +  Message: ${formMessage}`,
         message2: `ClientInfo: ${CLIIP} :: ${this.state.infoCLI}`,
       };
 
@@ -172,7 +172,7 @@ export default class ContactElements extends Component {
             name="description"
             content="Easily reach the A`A Roots team through this web page."
           />
-          <link rel="canonical" href="https://a-a-roots.web.app/contact" />
+          <link rel="canonical" href="https://aarootshi.com/contact" />
         </Helmet>
         <CSSTransitionGroup
           component="div"
@@ -204,7 +204,7 @@ export default class ContactElements extends Component {
               >
                 {/*  <p>
                   Reach out at either
-                  <a href="mailto:info@a-a-roots.web.app"> info@a-a-roots.web.app</a>,
+                  <a href="mailto:info@aarootshi.com"> info@aarootshi.com</a>,
                   through this form, or by phone at:
                 </p> */}
                 <h2>
