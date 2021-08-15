@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { Slider } from "react-burgers";
 
-import AppMobileMenu from "../AppMobileMenu";
 import { Link } from "react-router-dom";
 
 import {
@@ -105,7 +104,7 @@ class HeaderLogo extends React.Component {
         </div>
         <span style={{ position: "absolute", top: "15px" }}>
           <Slider id="SidebarButton"
-          aria-label="SidebarButton"
+            aria-label="SidebarButton"
             role="button"
             aria-pressed="false"
             style={{ position: "absolute", top: "-25px" }}

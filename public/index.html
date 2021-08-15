@@ -60,9 +60,28 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <span id="bgEffectDOM"></span>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- We use the full link to the CSS file in the rest of the tags -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
-      rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
+      />
+    </noscript>
   </body>
 </html>

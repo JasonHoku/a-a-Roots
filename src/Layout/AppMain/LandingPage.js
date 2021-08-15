@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
-import "../AppHeader/Components/analytics";
 import mauisat from "../../assets/images/MauiSat2.webp";
 import { Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";

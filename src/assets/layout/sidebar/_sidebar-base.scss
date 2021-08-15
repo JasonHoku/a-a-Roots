@@ -11,9 +11,6 @@
   margin-top: -$app-header-height;
   transition: all 0.2s;
 
-  .app-sidebar__inner {
-    padding: 2px ($layout-spacer-x) $layout-spacer-x;
-  }
 
   .scrollbar-container {
     z-index: 15;

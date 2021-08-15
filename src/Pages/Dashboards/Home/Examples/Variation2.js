@@ -87,7 +87,7 @@ export default class CRMDashboard2 extends Component {
               top: "80px",
               opacity: 0,
               background:
-                "linear-gradient(to bottom, rgba(0, 0, 0, 0.50) 100%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.95) 100%), url(/images/homeimage.jpg)",
+                "linear-gradient(to bottom, rgba(0, 0, 0, 0.50) 100%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.95) 100%), url(/images/homeimage.webp)",
               backgroundPosition: "center",
               backgroundColor: "black",
               backgroundSize: "cover",

@@ -1,9 +1,5 @@
-import React, { Component, Fragment } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import MetisMenu from "react-metismenu";
+import React, { Component, Fragment, useState, useEffect } from "react";
 import clsx from "clsx";
-import { setEnableMobileMenu } from "../../reducers/ThemeOptions";
 
 import { IoIosInformationCircleOutline, IoIosCog } from "react-icons/io";
 
@@ -11,11 +7,6 @@ import { GiAtom } from "react-icons/gi";
 
 import { GoMailRead } from "react-icons/go";
 
-import { SiGooglecalendar, SiShopify } from "react-icons/si";
-
-import { GiCutDiamond } from "react-icons/gi";
-
-import { GrMapLocation } from "react-icons/gr";
 
 import { Link } from "react-router-dom";
 
@@ -36,6 +27,24 @@ const useStyles = makeStyles({
 });
 
 export default function Nav() {
+
+
+  const [navVar, setNavVar] = useState(window.location.pathname);
+
+  useEffect(() => {
+    if (!window.navUpdater) {
+      window.navUpdater = document.addEventListener("mousedown", () => {
+
+        setTimeout(() => {
+          setNavVar(window.location.pathname)
+        }, 250)
+
+
+      })
+
+    }
+  })
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -55,7 +64,7 @@ export default function Nav() {
       ) {
         return;
       }
-    } catch (error) {}
+    } catch (error) { }
     setState({ state, [anchor]: open });
   };
   if (!window.toggleSidebar) {
@@ -85,13 +94,12 @@ export default function Nav() {
 
       <h5 className="app-sidebar__heading">&nbsp;Navigate</h5>
       <Link onClick={toggleMobileSidebar} to="/home">
-        <h4>
+        <h4 style={{ backgroundColor: (window.location.pathname === "/home" || window.location.pathname === "/") ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
               width: "115%",
               marginTop: "15px",
-              height: "125%",
               marginBottom: "15px",
               position: "relative",
             }}
@@ -116,7 +124,7 @@ export default function Nav() {
       </Link>
 
       <Link onClick={toggleMobileSidebar} to="/menu">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/menu" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -146,7 +154,7 @@ export default function Nav() {
       <h3 className="app-sidebar__heading">&nbsp;Learn</h3>
 
       <Link onClick={toggleMobileSidebar} to="/about">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/about" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -174,7 +182,7 @@ export default function Nav() {
       </Link>
 
       <Link onClick={toggleMobileSidebar} to="/contact">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/contact" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -204,7 +212,7 @@ export default function Nav() {
       <h5 className="app-sidebar__heading">&nbsp;Account</h5>
 
       <Link onClick={toggleMobileSidebar} to="/account">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/account" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -263,23 +271,23 @@ export default function Nav() {
             alt="A`A Roots logo"
             src="/logoHorizontal.webp"
             style={{
-              width: "100%",
+              width: "85%",
               backgroundSize: "125%",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               position: "relative",
-              top: "50%",
+              top: "0",
               verticalAlign: "middle",
               alignItems: "center",
               minWidth: "50px",
-              left: "-15px",
+              left: "0",
             }}
           ></img>
         </div>
       </Link>
 
       <Link onClick={toggleMobileSidebar} to="/home">
-        <h4>
+        <h4 style={{ backgroundColor: (window.location.pathname === "/home" || window.location.pathname === "/") ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -309,7 +317,7 @@ export default function Nav() {
       </Link>
 
       <Link onClick={toggleMobileSidebar} to="/menu">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/menu" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -339,7 +347,7 @@ export default function Nav() {
       <h3 className="app-sidebar__heading">&nbsp;Learn</h3>
 
       <Link onClick={toggleMobileSidebar} to="/about">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/about" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -367,7 +375,7 @@ export default function Nav() {
       </Link>
 
       <Link onClick={toggleMobileSidebar} to="/contact">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/contact" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{
@@ -397,7 +405,7 @@ export default function Nav() {
       <h5 className="app-sidebar__heading">&nbsp;Account</h5>
 
       <Link onClick={toggleMobileSidebar} to="/account">
-        <h4>
+        <h4 style={{ backgroundColor: window.location.pathname === "/account" ? "#00d2ff" : "transparent" }}>
           <button
             className="gradientBtn"
             style={{

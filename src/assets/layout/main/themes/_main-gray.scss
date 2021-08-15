@@ -27,56 +27,6 @@ $app-header-logo-bg: rgba(0, 0, 0, 0);
   .app-header {
     background: linear-gradient(137deg, #e0a317, #ffd900, #e36421, #f2d789);
     background-size: 200% 200%;
-
-    -webkit-animation: MovingGradient 15s ease infinite;
-    -moz-animation: MovingGradient 15s ease infinite;
-    -o-animation: MovingGradient 15s ease infinite;
-    animation: MovingGradient 15s ease infinite;
-  }
-
-  @-webkit-keyframes MovingGradient {
-    0% {
-      background-position: 2% 0%;
-    }
-    50% {
-      background-position: 99% 100%;
-    }
-    100% {
-      background-position: 2% 0%;
-    }
-  }
-  @-moz-keyframes MovingGradient {
-    0% {
-      background-position: 2% 0%;
-    }
-    50% {
-      background-position: 99% 100%;
-    }
-    100% {
-      background-position: 2% 0%;
-    }
-  }
-  @-o-keyframes MovingGradient {
-    0% {
-      background-position: 2% 0%;
-    }
-    50% {
-      background-position: 99% 100%;
-    }
-    100% {
-      background-position: 2% 0%;
-    }
-  }
-  @keyframes MovingGradient {
-    0% {
-      background-position: 2% 0%;
-    }
-    50% {
-      background-position: 99% 100%;
-    }
-    100% {
-      background-position: 2% 0%;
-    }
   }
 
   .app-footer {
@@ -102,7 +52,6 @@ $app-header-logo-bg: rgba(0, 0, 0, 0);
 
   .main-card {
     box-shadow: 0 0 0 0 transparent !important;
-
     & > .card-body {
       & > .card-title {
         text-transform: none;
